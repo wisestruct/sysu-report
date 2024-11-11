@@ -3,6 +3,7 @@
 #import "@preview/cuti:0.2.1": show-cn-fakebold
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/outrageous:0.1.0"
+#import "@preview/i-figured:0.2.4"
 
 #set heading(hanging-indent: 1.5em)
 #show heading: it => {
@@ -25,12 +26,36 @@
 
 #show: align-enum-marker-with-baseline
 #show: show-cn-fakebold
+#show heading: i-figured.reset-counters.with(extra-kinds: ("image",))
+#show figure: i-figured.show-figure.with(extra-prefixes: (image: "img:"))
+#show math.equation: i-figured.show-equation
 
+#show figure: set align(center)
+#show table: set align(center)
+
+#show bibliography: set par(hanging-indent: 0em, leading: 16pt)
+#show bibliography: set text(size: zihao.wuhao)
+
+#let fake-par = context {
+  let b = par(box())
+  b
+  v(-measure(b + b).height)
+}
+#show list: it => {
+  it
+  fake-par
+}
+#show figure: it => {
+  it
+  fake-par
+}
+#show enum: it => {
+  it
+  fake-par
+}
 #show link: it => {
   underline(text(rgb(0, 0, 255), it))
 }
-#show bibliography: set par(hanging-indent: 0em)
-#show table: set align(center)
 
 #let uline(width, body) = box(body, width: width, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))
 #let distr(s, w: auto) = {
@@ -293,57 +318,77 @@ $square$ *机密论文*，保密#uline(2.5em)[]年（不超过20年），过保�
 
 #show footnote.entry: set text(font: ziti.songti, size: zihao.xiaowu)
 
-#set page(
-  header: context {
-    set text(font: ziti.songti, size: zihao.xiaowu)
-    set par(leading: 12pt)
+#set page(header: context {
+  set text(font: ziti.songti, size: zihao.xiaowu)
+  set par(leading: 12pt)
 
-    // 获取当前标题内容
-    let headingTitle = ""
-    let headingNumber = ""
+  // 获取当前标题内容
+  let headingTitle = ""
+  let headingNumber = ""
 
-    // 对章节第一页做特殊处理，因为制作章节第一页的页眉时，当前章节标题还没出现
-    // 所以 query 中使用 after(here())
-    // 同时要 filter 出当前页的，不能把后面章节标题弄进来了
-    let elems = query(selector(heading.where(level: 1)).after(here()))
-                  .filter(it => it.location().page() == here().page())
+  // 对章节第一页做特殊处理，因为制作章节第一页的页眉时，当前章节标题还没出现
+  // 所以 query 中使用 after(here())
+  // 同时要 filter 出当前页的，不能把后面章节标题弄进来了
+  let elems = query(selector(heading.where(level: 1)).after(here())).filter(it => it.location().page() == here().page())
 
-    if elems.len() != 0 {
-      // 如果 filter 出来的结果非空，意味着我们就在章节首页
-      // 在制作页眉时当前章节标题还没出现，因此章节编号要加上 1
-      headingTitle = elems.last().body
-    } else {
-      // 如果 filter 出来的结果为空，意味着我们就在章节中间
-      // 重新使用 before(here()) 进行 query 来查询章节标题
-      elems = query(selector(heading.where(level: 1)).before(here()))
-      headingTitle = elems.last().body
-    }
+  if elems.len() != 0 {
+    // 如果 filter 出来的结果非空，意味着我们就在章节首页
+    // 在制作页眉时当前章节标题还没出现，因此章节编号要加上 1
+    headingTitle = elems.last().body
+  } else {
+    // 如果 filter 出来的结果为空，意味着我们就在章节中间
+    // 重新使用 before(here()) 进行 query 来查询章节标题
+    elems = query(selector(heading.where(level: 1)).before(here()))
+    headingTitle = elems.last().body
+  }
 
-    // 奇数页和偶数页的页眉是对称的
-    if calc.odd(counter(page).get().first()) {
-      // 奇数页左边是论文名称，右边是章节标题
-      "上海交通大学硕士学位论文"
-      h(1fr)
-      headingTitle
-    } else {
-      // 偶数页对称过来
-      headingTitle
-      h(1fr)
-      "上海交通大学硕士学位论文"
-    }
+  // 奇数页和偶数页的页眉是对称的
+  if calc.odd(counter(page).get().first()) {
+    // 奇数页左边是论文名称，右边是章节标题
+    "上海交通大学硕士学位论文"
+    h(1fr)
+    headingTitle
+  } else {
+    // 偶数页对称过来
+    headingTitle
+    h(1fr)
+    "上海交通大学硕士学位论文"
+  }
 
-    // 画出页眉的两条线，一粗一细
-    v(-10pt)
-    line(length: 100%, stroke: 2.2416pt)
-    v(-13pt)
-    line(length: 100%, stroke: 0.7472pt)
-  },
-)
+  // 画出页眉的两条线，一粗一细
+  v(-10pt)
+  line(length: 100%, stroke: 2.2416pt)
+  v(-13pt)
+  line(length: 100%, stroke: 0.7472pt)
+})
 
 #set page(header-ascent: 0.5cm)
 #set par(justify: true)
 #set page(numbering: "I")
 #counter(page).update(1)
+
+#set figure.caption(separator: [#h(1em)])
+#show figure.where(kind: "image"): set text(size: zihao.wuhao, weight: "bold")
+#show figure.where(kind: "image-en"): set text(size: zihao.wuhao, weight: "bold")
+#show figure.where(kind: "table"): set text(size: zihao.wuhao, weight: "bold")
+#show figure.where(kind: "table-en"): set text(size: zihao.wuhao, weight: "bold")
+#show figure.where(kind: "table"): set figure.caption(position: top)
+#show figure.where(kind: "table-en"): set figure.caption(position: top)
+#show figure: set block(breakable: true)
+#let xubiao = state("xubiao")
+
+#show table: set text(size: zihao.wuhao, weight: "regular")
+#show table: set par(leading: 14pt)
+#set table(stroke: (x, y) => {
+  if y == 0 {
+    none
+  } else {
+    none
+  }
+})
+#show table: it => xubiao.update(false) + it
+
+#set math.equation(supplement: [公式])
 
 = 摘#h(1em)要
 
@@ -468,58 +513,55 @@ This template is therefore made to improve the quality of postgraduates’ disse
 }
 
 #set page(numbering: "1")
-#set page(
-  header: context {
-    set text(font: ziti.songti, size: zihao.xiaowu)
-    set par(leading: 12pt)
+#set page(header: context {
+  set text(font: ziti.songti, size: zihao.xiaowu)
+  set par(leading: 12pt)
 
-    // 获取当前标题内容
-    let headingTitle = ""
-    let headingNumber = ""
+  // 获取当前标题内容
+  let headingTitle = ""
+  let headingNumber = ""
 
-    // 对章节第一页做特殊处理，因为制作章节第一页的页眉时，当前章节标题还没出现
-    // 所以 query 中使用 after(here())
-    // 同时要 filter 出当前页的，不能把后面章节标题弄进来了
-    let elems = query(selector(heading.where(level: 1)).after(here()))
-                  .filter(it => it.location().page() == here().page())
+  // 对章节第一页做特殊处理，因为制作章节第一页的页眉时，当前章节标题还没出现
+  // 所以 query 中使用 after(here())
+  // 同时要 filter 出当前页的，不能把后面章节标题弄进来了
+  let elems = query(selector(heading.where(level: 1)).after(here())).filter(it => it.location().page() == here().page())
 
-    if elems.len() != 0 {
-      // 如果 filter 出来的结果非空，意味着我们就在章节首页
-      // 在制作页眉时当前章节标题还没出现，因此章节编号要加上 1
-      headingTitle = elems.last().body
-      headingNumber = "第" + str(counter(heading).get().first() + 1) + "章"
-    } else {
-      // 如果 filter 出来的结果为空，意味着我们就在章节中间
-      // 重新使用 before(here()) 进行 query 来查询章节标题
-      elems = query(selector(heading.where(level: 1)).before(here()))
-      headingTitle = elems.last().body
-      headingNumber = "第" + str(counter(heading).get().first()) + "章"
-    }
+  if elems.len() != 0 {
+    // 如果 filter 出来的结果非空，意味着我们就在章节首页
+    // 在制作页眉时当前章节标题还没出现，因此章节编号要加上 1
+    headingTitle = elems.last().body
+    headingNumber = "第" + str(counter(heading).get().first() + 1) + "章"
+  } else {
+    // 如果 filter 出来的结果为空，意味着我们就在章节中间
+    // 重新使用 before(here()) 进行 query 来查询章节标题
+    elems = query(selector(heading.where(level: 1)).before(here()))
+    headingTitle = elems.last().body
+    headingNumber = "第" + str(counter(heading).get().first()) + "章"
+  }
 
-    // 奇数页和偶数页的页眉是对称的
-    if calc.odd(counter(page).get().first()) {
-      // 奇数页左边是论文名称，右边是章节标题
-      "上海交通大学硕士学位论文"
-      h(1fr)
-      headingNumber
-      h(1em)
-      headingTitle
-    } else {
-      // 偶数页对称过来
-      headingNumber
-      h(1em)
-      headingTitle
-      h(1fr)
-      "上海交通大学硕士学位论文"
-    }
+  // 奇数页和偶数页的页眉是对称的
+  if calc.odd(counter(page).get().first()) {
+    // 奇数页左边是论文名称，右边是章节标题
+    "上海交通大学硕士学位论文"
+    h(1fr)
+    headingNumber
+    h(1em)
+    headingTitle
+  } else {
+    // 偶数页对称过来
+    headingNumber
+    h(1em)
+    headingTitle
+    h(1fr)
+    "上海交通大学硕士学位论文"
+  }
 
-    // 画出页眉的两条线，一粗一细
-    v(-10pt)
-    line(length: 100%, stroke: 2.2416pt)
-    v(-13pt)
-    line(length: 100%, stroke: 0.7472pt)
-  },
-)
+  // 画出页眉的两条线，一粗一细
+  v(-10pt)
+  line(length: 100%, stroke: 2.2416pt)
+  v(-13pt)
+  line(length: 100%, stroke: 0.7472pt)
+})
 
 #counter(page).update(1)
 
@@ -527,27 +569,27 @@ This template is therefore made to improve the quality of postgraduates’ disse
 
 == 引言
 
-学位论文……
+学位论文......
 
 === 三级标题
 
-……
+......
 
 ==== 四级标题
 
-……
+......
 
 == 本文研究主要内容
 
-本文……
+本文......
 
 == 本文研究意义
 
-本文……
+本文......
 
 == 本章小结
 
-本文……
+本文......
 
 = 格式要求
 
@@ -585,9 +627,342 @@ This template is therefore made to improve the quality of postgraduates’ disse
 
 == 本章小结
 
-本章介绍了……
+本章介绍了......
 
 = 图表、公式格式
 
 == 图表格式
 
+#figure(
+  figure(
+    image(
+      "figures/example.png",
+      width: 70%,
+    ),
+    gap: 2em,
+    kind: "image-en",
+    supplement: [Figure],
+    caption: [Energy distribution along radial],
+  ),
+  gap: -2.3em,
+  kind: "image",
+  supplement: [图],
+  caption: [内热源沿径向的分布],
+)<image>
+#v(1.5em)
+
+如 @img:image 所示，......
+
+我们来看 @tbl:table，
+
+#figure(
+  figure(
+    table(
+      columns: (25%, 25%, 25%, 25%),
+      table.header(
+        table.cell(
+          colspan: 4,
+          {
+            context if xubiao.get() {
+              align(left)[*续@tbl:table*]
+            } else {
+              v(-0.9em)
+              xubiao.update(true)
+            }
+          },
+        ),
+        table.hline(),
+        [感应频率 #linebreak() (kHz)],
+        [感应发生器功率 #linebreak() (%×80kW)],
+        [工件移动速度 #linebreak() (mm/min)],
+        [感应圈与零件间隙 #linebreak() (mm)],
+        table.hline(stroke: 0.5pt),
+      ),
+      ..for i in range(15) {
+        ([250], [88], [5900], [1.65])
+      },
+      table.hline(),
+    ),
+    kind: "table-en",
+    supplement: [Table],
+    caption: [XXXX],
+  ),
+  gap: 1em,
+  kind: "table",
+  supplement: [表],
+  caption: [高频感应加热的基本参数],
+)<table>
+
+== 公式格式
+
+我要引用 @eqt:equation。
+
+$ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Alpha) + J_0 = 0 $<equation>
+
+== 本章小结
+
+本章介绍了……
+
+= 全文总结
+
+== 主要结论
+
+本文主要……
+
+== 研究展望
+
+更深入的研究……
+
+#set page(header: context {
+  set text(font: ziti.songti, size: zihao.xiaowu)
+  set par(leading: 12pt)
+
+  // 获取当前标题内容
+  let headingTitle = ""
+  let headingNumber = ""
+
+  // 对章节第一页做特殊处理，因为制作章节第一页的页眉时，当前章节标题还没出现
+  // 所以 query 中使用 after(here())
+  // 同时要 filter 出当前页的，不能把后面章节标题弄进来了
+  let elems = query(selector(heading.where(level: 1)).after(here())).filter(it => it.location().page() == here().page())
+
+  if elems.len() != 0 {
+    // 如果 filter 出来的结果非空，意味着我们就在章节首页
+    // 在制作页眉时当前章节标题还没出现，因此章节编号要加上 1
+    headingTitle = elems.last().body
+  } else {
+    // 如果 filter 出来的结果为空，意味着我们就在章节中间
+    // 重新使用 before(here()) 进行 query 来查询章节标题
+    elems = query(selector(heading.where(level: 1)).before(here()))
+    headingTitle = elems.last().body
+  }
+
+  // 奇数页和偶数页的页眉是对称的
+  if calc.odd(counter(page).get().first()) {
+    // 奇数页左边是论文名称，右边是章节标题
+    "上海交通大学硕士学位论文"
+    h(1fr)
+    headingTitle
+  } else {
+    // 偶数页对称过来
+    headingTitle
+    h(1fr)
+    "上海交通大学硕士学位论文"
+  }
+
+  // 画出页眉的两条线，一粗一细
+  v(-10pt)
+  line(length: 100%, stroke: 2.2416pt)
+  v(-13pt)
+  line(length: 100%, stroke: 0.7472pt)
+})
+
+#show heading.where(level: 1): it => {
+  set text(
+    // 数字用 Times Roman，中文用黑体，均为四号字，加粗
+    font: ziti.heiti,
+    weight: "bold",
+    size: zihao.sanhao
+  )
+  set par(
+    // 无缩进，行距18磅
+    first-line-indent: 0em,
+    leading: 18pt
+  )
+  //前后间距分别为24磅和6磅
+  pagebreak()
+  v(24pt)
+  it.body
+  v(18pt)
+}
+
+#bibliography(
+  "ref.bib",
+  title: "参考文献",
+  style: "gb-7714-2015-numeric",
+  full: true,
+)
+
+#set heading(
+  numbering: numbly(
+    "附录{1:A} ",
+    "{1:A}.{2} ",
+    "{1:A}.{2}.{3} ",
+    "{1:A}.{2}.{3}.{4} ",
+  ),
+)
+#counter(heading).update(0)
+
+#set page(header: context {
+  set text(font: ziti.songti, size: zihao.xiaowu)
+  set par(leading: 12pt)
+
+  // 获取当前标题内容
+  let headingTitle = ""
+  let headingNumber = ""
+
+  // 对章节第一页做特殊处理，因为制作章节第一页的页眉时，当前章节标题还没出现
+  // 所以 query 中使用 after(here())
+  // 同时要 filter 出当前页的，不能把后面章节标题弄进来了
+  let elems = query(selector(heading.where(level: 1)).after(here())).filter(it => it.location().page() == here().page())
+
+  if elems.len() != 0 {
+    // 如果 filter 出来的结果非空，意味着我们就在章节首页
+    // 在制作页眉时当前章节标题还没出现，因此章节编号要加上 1
+    headingTitle = elems.last().body
+    headingNumber = "附录" + str.from-unicode("A".to-unicode() + counter(heading).get().first())
+  } else {
+    // 如果 filter 出来的结果为空，意味着我们就在章节中间
+    // 重新使用 before(here()) 进行 query 来查询章节标题
+    elems = query(selector(heading.where(level: 1)).before(here()))
+    headingTitle = elems.last().body
+    headingNumber = "附录" + str.from-unicode("A".to-unicode() + counter(heading).get().first() - 1)
+  }
+
+  // 奇数页和偶数页的页眉是对称的
+  if calc.odd(counter(page).get().first()) {
+    // 奇数页左边是论文名称，右边是章节标题
+    "上海交通大学硕士学位论文"
+    h(1fr)
+    headingNumber
+    h(1em)
+    headingTitle
+  } else {
+    // 偶数页对称过来
+    headingNumber
+    h(1em)
+    headingTitle
+    h(1fr)
+    "上海交通大学硕士学位论文"
+  }
+
+  // 画出页眉的两条线，一粗一细
+  v(-10pt)
+  line(length: 100%, stroke: 2.2416pt)
+  v(-13pt)
+  line(length: 100%, stroke: 0.7472pt)
+})
+
+#show heading.where(level: 1): it => {
+  set text(
+    // 数字用 Times Roman，中文用黑体，均为四号字，加粗
+    font: ziti.heiti,
+    weight: "bold",
+    size: zihao.sanhao
+  )
+  set par(
+    // 无缩进，行距18磅
+    first-line-indent: 0em,
+    leading: 18pt
+  )
+  //前后间距分别为24磅和6磅
+  pagebreak()
+  v(24pt)
+  counter(heading).display() + h(1em) + it.body
+  v(18pt)
+}
+
+= 实验环境
+
+== 硬件配置
+
+......
+
+== 软件工具
+
+......
+
+#set heading(numbering: none)
+#set page(header: context {
+  set text(font: ziti.songti, size: zihao.xiaowu)
+  set par(leading: 12pt)
+
+  // 获取当前标题内容
+  let headingTitle = ""
+  let headingNumber = ""
+
+  // 对章节第一页做特殊处理，因为制作章节第一页的页眉时，当前章节标题还没出现
+  // 所以 query 中使用 after(here())
+  // 同时要 filter 出当前页的，不能把后面章节标题弄进来了
+  let elems = query(selector(heading.where(level: 1)).after(here())).filter(it => it.location().page() == here().page())
+
+  if elems.len() != 0 {
+    // 如果 filter 出来的结果非空，意味着我们就在章节首页
+    // 在制作页眉时当前章节标题还没出现，因此章节编号要加上 1
+    headingTitle = elems.last().body
+  } else {
+    // 如果 filter 出来的结果为空，意味着我们就在章节中间
+    // 重新使用 before(here()) 进行 query 来查询章节标题
+    elems = query(selector(heading.where(level: 1)).before(here()))
+    headingTitle = elems.last().body
+  }
+
+  // 奇数页和偶数页的页眉是对称的
+  if calc.odd(counter(page).get().first()) {
+    // 奇数页左边是论文名称，右边是章节标题
+    "上海交通大学硕士学位论文"
+    h(1fr)
+    headingTitle
+  } else {
+    // 偶数页对称过来
+    headingTitle
+    h(1fr)
+    "上海交通大学硕士学位论文"
+  }
+
+  // 画出页眉的两条线，一粗一细
+  v(-10pt)
+  line(length: 100%, stroke: 2.2416pt)
+  v(-13pt)
+  line(length: 100%, stroke: 0.7472pt)
+})
+
+#show heading.where(level: 1): it => {
+  set text(
+    // 数字用 Times Roman，中文用黑体，均为四号字，加粗
+    font: ziti.heiti,
+    weight: "bold",
+    size: zihao.sanhao
+  )
+  set par(
+    // 无缩进，行距18磅
+    first-line-indent: 0em,
+    leading: 18pt
+  )
+  //前后间距分别为24磅和6磅
+  pagebreak()
+  v(24pt)
+  it.body
+  v(18pt)
+}
+
+= 致#h(1em)谢
+
+致谢主要感谢导师和对论文工作有直接贡献和帮助的人士和单位。致谢言语应谦虚诚恳，实事求是。
+
+= 学术论文和科研成果目录
+
+#let bibitem(body) = figure(kind: "bibitem", supplement: none, body)
+#show figure.where(kind: "bibitem"): it => {
+  set align(left)
+  set text(size: zihao.wuhao)
+  box(width: 2em, it.counter.display("[1]"))
+  it.body
+  parbreak()
+}
+#show ref: it => {
+  let e = it.element
+  if e.func() == figure and e.kind == "bibitem" {
+    let loc = e.location()
+    return link(loc, numbering("[1]", ..e.counter.at(loc)))
+  }
+  it
+}
+#show list: set text(font: ziti.heiti, weight: "bold")
+
+- 学术论文
+#bibitem[Chen H, Chan C T. Acoustic cloaking in three dimensions using acoustic metamaterials[J]. Applied Physics Letters, 2007, 91:183518.] <ref1>
+#bibitem[Chen H, Wu B I, Zhang B, et al. Electromagnetic Wave Interactions with a Metamaterial Cloak[J]. Physical Review Letters, 2007, 99(6):63903.] <ref2>
+
+- 专利
+#bibitem[第一发明人, 永动机[P], 专利申请号202510149890.0.] <ref3>
