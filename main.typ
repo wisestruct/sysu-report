@@ -342,18 +342,22 @@ $square$ *机密论文*，保密#uline(2.5em)[]年（不超过20年），过保�
     headingTitle = elems.last().body
   }
 
+  "上海交通大学硕士学位论文"
+  h(1fr)
+  headingTitle
+
   // 奇数页和偶数页的页眉是对称的
-  if calc.odd(counter(page).get().first()) {
-    // 奇数页左边是论文名称，右边是章节标题
-    "上海交通大学硕士学位论文"
-    h(1fr)
-    headingTitle
-  } else {
-    // 偶数页对称过来
-    headingTitle
-    h(1fr)
-    "上海交通大学硕士学位论文"
-  }
+  // if calc.odd(counter(page).get().first()) {
+  //   // 奇数页左边是论文名称，右边是章节标题
+  //   "上海交通大学硕士学位论文"
+  //   h(1fr)
+  //   headingTitle
+  // } else {
+  //   // 偶数页对称过来
+  //   headingTitle
+  //   h(1fr)
+  //   "上海交通大学硕士学位论文"
+  // }
 
   // 画出页眉的两条线，一粗一细
   v(-10pt)
@@ -539,22 +543,28 @@ This template is therefore made to improve the quality of postgraduates’ disse
     headingNumber = "第" + str(counter(heading).get().first()) + "章"
   }
 
+  "上海交通大学硕士学位论文"
+  h(1fr)
+  headingNumber
+  h(1em)
+  headingTitle
+
   // 奇数页和偶数页的页眉是对称的
-  if calc.odd(counter(page).get().first()) {
-    // 奇数页左边是论文名称，右边是章节标题
-    "上海交通大学硕士学位论文"
-    h(1fr)
-    headingNumber
-    h(1em)
-    headingTitle
-  } else {
-    // 偶数页对称过来
-    headingNumber
-    h(1em)
-    headingTitle
-    h(1fr)
-    "上海交通大学硕士学位论文"
-  }
+  // if calc.odd(counter(page).get().first()) {
+  //   // 奇数页左边是论文名称，右边是章节标题
+  //   "上海交通大学硕士学位论文"
+  //   h(1fr)
+  //   headingNumber
+  //   h(1em)
+  //   headingTitle
+  // } else {
+  //   // 偶数页对称过来
+  //   headingNumber
+  //   h(1em)
+  //   headingTitle
+  //   h(1fr)
+  //   "上海交通大学硕士学位论文"
+  // }
 
   // 画出页眉的两条线，一粗一细
   v(-10pt)
@@ -737,18 +747,22 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
     headingTitle = elems.last().body
   }
 
+  "上海交通大学硕士学位论文"
+  h(1fr)
+  headingTitle
+
   // 奇数页和偶数页的页眉是对称的
-  if calc.odd(counter(page).get().first()) {
-    // 奇数页左边是论文名称，右边是章节标题
-    "上海交通大学硕士学位论文"
-    h(1fr)
-    headingTitle
-  } else {
-    // 偶数页对称过来
-    headingTitle
-    h(1fr)
-    "上海交通大学硕士学位论文"
-  }
+  // if calc.odd(counter(page).get().first()) {
+  //   // 奇数页左边是论文名称，右边是章节标题
+  //   "上海交通大学硕士学位论文"
+  //   h(1fr)
+  //   headingTitle
+  // } else {
+  //   // 偶数页对称过来
+  //   headingTitle
+  //   h(1fr)
+  //   "上海交通大学硕士学位论文"
+  // }
 
   // 画出页眉的两条线，一粗一细
   v(-10pt)
@@ -819,22 +833,28 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
     headingNumber = "附录" + str.from-unicode("A".to-unicode() + counter(heading).get().first() - 1)
   }
 
+  "上海交通大学硕士学位论文"
+  h(1fr)
+  headingNumber
+  h(1em)
+  headingTitle
+
   // 奇数页和偶数页的页眉是对称的
-  if calc.odd(counter(page).get().first()) {
-    // 奇数页左边是论文名称，右边是章节标题
-    "上海交通大学硕士学位论文"
-    h(1fr)
-    headingNumber
-    h(1em)
-    headingTitle
-  } else {
-    // 偶数页对称过来
-    headingNumber
-    h(1em)
-    headingTitle
-    h(1fr)
-    "上海交通大学硕士学位论文"
-  }
+  // if calc.odd(counter(page).get().first()) {
+  //   // 奇数页左边是论文名称，右边是章节标题
+  //   "上海交通大学硕士学位论文"
+  //   h(1fr)
+  //   headingNumber
+  //   h(1em)
+  //   headingTitle
+  // } else {
+  //   // 偶数页对称过来
+  //   headingNumber
+  //   h(1em)
+  //   headingTitle
+  //   h(1fr)
+  //   "上海交通大学硕士学位论文"
+  // }
 
   // 画出页眉的两条线，一粗一细
   v(-10pt)
@@ -897,18 +917,22 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
     headingTitle = elems.last().body
   }
 
+  "上海交通大学硕士学位论文"
+  h(1fr)
+  headingTitle
+
   // 奇数页和偶数页的页眉是对称的
-  if calc.odd(counter(page).get().first()) {
-    // 奇数页左边是论文名称，右边是章节标题
-    "上海交通大学硕士学位论文"
-    h(1fr)
-    headingTitle
-  } else {
-    // 偶数页对称过来
-    headingTitle
-    h(1fr)
-    "上海交通大学硕士学位论文"
-  }
+  // if calc.odd(counter(page).get().first()) {
+  //   // 奇数页左边是论文名称，右边是章节标题
+  //   "上海交通大学硕士学位论文"
+  //   h(1fr)
+  //   headingTitle
+  // } else {
+  //   // 偶数页对称过来
+  //   headingTitle
+  //   h(1fr)
+  //   "上海交通大学硕士学位论文"
+  // }
 
   // 画出页眉的两条线，一粗一细
   v(-10pt)
