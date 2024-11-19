@@ -4,7 +4,7 @@
 
 ## 使用
 
-快速浏览效果: 查看 [thesis.pdf](https://github.com/tzhTaylor/typst-sjtu-thesis-master/blob/main/template/thesis.pdf)，样例论文源码：查看 [thesis.typ](https://github.com/tzhTaylor/typst-sjtu-thesis-master/blob/main/template/thesis.typ)
+快速浏览效果: 查看 [thesis.pdf](https://github.com/tzhTaylor/typst-sjtu-thesis-master/releases/download/v0.1.0/thesis.pdf)，样例论文源码：查看 [thesis.typ](https://github.com/tzhTaylor/typst-sjtu-thesis-master/blob/main/template/thesis.typ)
 
 ### VS Code 本地编辑（推荐）
 
