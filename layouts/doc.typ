@@ -56,9 +56,6 @@
     it
     fake-par
   }
-  show link: it => {
-    underline(text(rgb(0, 0, 255), it))
-  }
 
   set document(
     title: info.title,
