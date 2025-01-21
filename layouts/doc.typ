@@ -1,5 +1,5 @@
 #import "../utils/style.typ": ziti
-#import "@preview/cuti:0.2.1": show-cn-fakebold
+#import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "@preview/i-figured:0.2.4"
 
 // 文稿设置，可以进行一些像页面边距这类的全局设置
