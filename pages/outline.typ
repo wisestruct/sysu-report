@@ -1,5 +1,5 @@
 #import "../utils/style.typ": ziti, zihao
-#import "@preview/outrageous:0.1.0"
+#import "@preview/outrageous:0.3.0"
 
 #let outline-page(
   twoside: false,

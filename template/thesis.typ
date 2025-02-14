@@ -68,7 +68,7 @@
 #abstract-en(keywords: ("dissertation", "dissertation format", "standardization", "template"))[
   As a primary means of demonstrating research findings for postgraduate students, dissertation is a systematic and standardized record of the new inventions, theories or insights obtained by the author in the research work. It can not only function as an important reference when students pursue further studies, but also contribute to scientific research and social development.
 
-  This template is therefore made to improve the quality of postgraduates’ dissertations and to further standardize it both in content and in format.
+  This template is therefore made to improve the quality of postgraduates' dissertations and to further standardize it both in content and in format.
 ]
 
 #outline()
