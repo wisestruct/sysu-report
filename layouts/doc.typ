@@ -35,6 +35,8 @@
   show figure: set align(center)
   show table: set align(center)
 
+  show figure.caption: set par(leading: 10pt, justify: false)
+
   show heading: i-figured.reset-counters.with(extra-kinds: ("image",))
   show figure: i-figured.show-figure.with(extra-prefixes: (image: "img:"))
   show math.equation: i-figured.show-equation

@@ -144,21 +144,21 @@
 == 图表格式
 
 #figure(
-  figure(
+  [#figure(
     image(
       "figures/energy-distribution.png",
       width: 70%,
     ),
-    gap: 2em,
-    kind: "image-en",
-    supplement: [Figure],
-    caption: [Energy distribution along radial], // 英文图例
-  ),
-  gap: -2.3em,
-  kind: "image",
-  supplement: [图],
-  caption: [内热源沿径向的分布], // 中文图例
-)<image>
+    gap: 0.3em,
+    kind: "image",
+    supplement: [图],
+    caption: [内热源沿径向的分布], // 中文图例
+  )<image>],
+  gap: 1em,
+  kind: "image-en",
+  supplement: [Figure],
+  caption: [Energy distribution along radial], // 英文图例
+)
 #v(1.5em)
 
 // 图的引用请以 img 开头
@@ -203,7 +203,7 @@
     ),
     kind: "table-en",
     supplement: [Table],
-    caption: [XXXX], // 英文表例
+    caption: [XXXXXXX], // 英文表例
   ),
   gap: 1em,
   kind: "table",
