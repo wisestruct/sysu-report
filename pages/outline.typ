@@ -1,5 +1,4 @@
 #import "../utils/style.typ": ziti, zihao
-#import "@preview/outrageous:0.3.0"
 
 #let outline-page(
   twoside: false,
@@ -7,10 +6,7 @@
 ) = {
   set par(first-line-indent: 2em)
 
-  show outline.entry: outrageous.show-entry.with(
-    ..outrageous.presets.typst,
-    font-weight: ("bold", auto),
-  )
+  show outline.entry.where(level: 1): set text(weight: "bold")
 
   context outline(
     title: [目#h(1em)录],
