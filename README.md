@@ -33,6 +33,14 @@ Typst 提供了官方的 Web App，支持像 Overleaf 一样在线编辑。
 
 **你需要手动上传 fonts 目录下的字体文件到项目中，否则会导致字体显示错误！**
 
+## 相关链接
+
+如果对 Typst 感兴趣的话，可以从开题报告和中期报告模板开始尝试。
+
+- [研究生开题报告 Typst 模板](https://github.com/tzhTaylor/typst-sjtu-thesis-proposal)
+
+- [硕士研究生中期报告 Typst 模板](https://github.com/tzhTaylor/typst-sjtu-thesis-midterm)
+
 ## 致谢
 
 - 感谢 [@OrangeX4](https://github.com/OrangeX4) 开发的 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) 模板，本模板大体结构都是参考其开发的。
