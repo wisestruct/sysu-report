@@ -1,11 +1,11 @@
 [package]
 name = "modern-sjtu-thesis"
-version = "0.1.1"
+version = "0.2.0"
 entrypoint = "lib.typ"
 authors = ["tzhTaylor"]
 license = "MIT"
-description = "上海交通大学硕士学位论文 Typst 模板。Shanghai Jiao Tong University Graduate Thesis Typst Template."
-repository = "https://github.com/tzhTaylor/typst-sjtu-thesis-master"
+description = "上海交通大学学位论文 Typst 模板。Shanghai Jiao Tong University Thesis Typst Template."
+repository = "https://github.com/tzhTaylor/modern-sjtu-thesis"
 keywords = ["Shanghai Jiao Tong University", "thesis"]
 categories = ["thesis"]
 exclude = ["imgs"]

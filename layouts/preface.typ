@@ -9,7 +9,12 @@
 ) = {
   show footnote.entry: set text(font: ziti.songti, size: zihao.xiaowu)
 
-  show: no-numbering-page-header.with(doctype: doctype, twoside: twoside)
+  show: no-numbering-page-header.with(
+    doctype: doctype,
+    twoside: twoside,
+    bachelor-abs: if doctype == "bachelor" { true } else { false },
+    bachelor-abs-en: if doctype == "bachelor" { true } else { false },
+  )
   show: no-numbering-first-heading
 
   set page(header-ascent: 0.5cm)
@@ -29,19 +34,21 @@
 
   show table: set text(size: zihao.wuhao, weight: "regular")
   show table: set par(leading: 14pt)
-  set table(stroke: (x, y) => {
-    if y == 0 {
-      none
-    } else {
-      none
-    }
-  })
+  set table(
+    stroke: (x, y) => {
+      if y == 0 {
+        none
+      } else {
+        none
+      }
+    },
+  )
   show table: it => xubiao.update(false) + it
 
   set math.equation(supplement: [公式])
 
   set text(font: ziti.songti, size: zihao.xiaosi)
-  set par(first-line-indent: 2em, leading: 16pt, spacing: 16pt)
+  set par(leading: 16pt, spacing: 16pt)
 
   it
 }

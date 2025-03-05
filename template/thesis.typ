@@ -19,10 +19,11 @@
   bib,
   acknowledgement,
   achievement,
+  summary-en,
 ) = documentclass(
-  doctype: "master", // 文档类型: "master" | "doctor"
+  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
-  twoside: true, // 双面模式
+  twoside: false, // 双面模式
   anonymous: false, // 盲审模式
   info: (
     student_id: "520XXXXXXXX",
@@ -145,21 +146,21 @@
 
 #figure(
   [#figure(
-    image(
-      "figures/energy-distribution.png",
-      width: 70%,
-    ),
-    gap: 0.3em,
-    kind: "image",
-    supplement: [图],
-    caption: [内热源沿径向的分布], // 中文图例
-  )<image>],
+      image(
+        "figures/energy-distribution.png",
+        width: 70%,
+      ),
+      gap: 0.3em,
+      kind: "image",
+      supplement: [图],
+      caption: [内热源沿径向的分布], // 中文图例
+    )<image>],
   gap: 1em,
   kind: "image-en",
   supplement: [Figure],
-  caption: [Energy distribution along radial], // 英文图例
+  caption: [Energy distribution along radial], // 英文图例，本科生模板直接删除即可
 )
-#v(1.5em)
+#v(1em)
 
 // 图的引用请以 img 开头
 如 @img:image 所示，......
@@ -182,7 +183,7 @@
             context if xubiao.get() {
               align(left)[*续@tbl:table*] // 请一定要在末尾给表添加标签(如<table>)，并在此处修改引用
             } else {
-              v(-0.9em)
+              v(-0.6em)
               xubiao.update(true)
             }
           },
@@ -203,7 +204,7 @@
     ),
     kind: "table-en",
     supplement: [Table],
-    caption: [XXXXXXX], // 英文表例
+    caption: [XXXXXXX], // 英文表例，本科生模板直接删除
   ),
   gap: 1em,
   kind: "table",
@@ -239,24 +240,49 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
 
 #show: appendix
 
-= 实验环境
+// 请根据文档类型，自行选择 if-else 中的内容
 
-== 硬件配置
+#if doctype == "bachelor" [
+  = 符号与标记（附录1）
 
-......
+] else [
+  = 实验环境
 
-== 软件工具
+  == 硬件配置
 
-......
+  ......
 
-#acknowledgement[
-  致谢主要感谢导师和对论文工作有直接贡献和帮助的人士和单位。致谢言语应谦虚诚恳，实事求是。
+  == 软件工具
+
+  ......
 ]
 
-#achievement(
-  papers: (
-    "Chen H, Chan C T. Acoustic cloaking in three dimensions using acoustic metamaterials[J]. Applied Physics Letters, 2007, 91:183518.",
-    "Chen H, Wu B I, Zhang B, et al. Electromagnetic Wave Interactions with a Metamaterial Cloak[J]. Physical Review Letters, 2007, 99(6):63903.",
-  ),
-  patents: ("第一发明人, 永动机[P], 专利申请号202510149890.0.",),
-)
+#if doctype == "bachelor" [
+  #achievement(
+    papers: (
+      "Chen H, Chan C T. Acoustic cloaking in three dimensions using acoustic metamaterials[J]. Applied Physics Letters, 2007, 91:183518.",
+      "Chen H, Wu B I, Zhang B, et al. Electromagnetic Wave Interactions with a Metamaterial Cloak[J]. Physical Review Letters, 2007, 99(6):63903.",
+    ),
+    patents: ("第一发明人, 永动机[P], 专利申请号202510149890.0.",),
+  )
+
+  #acknowledgement[
+    致谢主要感谢导师和对论文工作有直接贡献和帮助的人士和单位。致谢言语应谦虚诚恳，实事求是。
+  ]
+] else [
+  #acknowledgement[
+    致谢主要感谢导师和对论文工作有直接贡献和帮助的人士和单位。致谢言语应谦虚诚恳，实事求是。
+  ]
+
+  #achievement(
+    papers: (
+      "Chen H, Chan C T. Acoustic cloaking in three dimensions using acoustic metamaterials[J]. Applied Physics Letters, 2007, 91:183518.",
+      "Chen H, Wu B I, Zhang B, et al. Electromagnetic Wave Interactions with a Metamaterial Cloak[J]. Physical Review Letters, 2007, 99(6):63903.",
+    ),
+    patents: ("第一发明人, 永动机[P], 专利申请号202510149890.0.",),
+  )
+]
+
+#summary-en[
+  HCCI (Homogenous Charge Compression Ignition)combustion has advantages in terms of efficiency and reduced emission. HCCI combustion can not only ensure both the high economic and dynamic quality of the engine, but also efficiently reduce the NOx and smoke emission. Moreover, one of the remarkable characteristics of HCCI combustion is that the ignition and combustion process are controlled by the chemical kinetics, so the HCCI ignition time can vary significantly with the changes of engine configuration parameters and operating conditions......
+]

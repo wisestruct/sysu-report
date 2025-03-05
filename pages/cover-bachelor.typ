@@ -1,10 +1,9 @@
 #import "../utils/style.typ": ziti, zihao
 #import "../utils/distr.typ": distr
-#import "../utils/datetime-display.typ": datetime-display
+#import "../utils/datetime-display.typ": datetime-display-without-day
 
-#let cover-page(
+#let cover-bachelor-page(
   date: datetime.today(),
-  doctype: "master",
   twoside: false,
   anonymous: false,
   info: (:),
@@ -17,11 +16,7 @@
     ),
   )
 
-  let cover-title = if doctype == "doctor" {
-    "上海交通大学博士学位论文"
-  } else {
-    "上海交通大学硕士学位论文"
-  }
+  let cover-title = "上海交通大学学位论文"
 
   align(
     center,
@@ -37,7 +32,7 @@
 
   v(4cm)
 
-  let info-key(zh) = (distr(zh, w: 5em))
+  let info-key(zh) = (distr(zh, w: 4em))
 
   let info-value(zh) = (
     text(
@@ -57,7 +52,7 @@
         right
       }
     ),
-    columns: (46%, 1%, 53%),
+    columns: (37%, 1%, 62%),
     inset: (right: 0em),
     column-gutter: (-0.3em, 1em),
     row-gutter: 0.7em,
@@ -79,16 +74,16 @@
         info-value(info.supervisor)
       }],
 
-    [#info-key("院系")], [#text(weight: "bold")[：]], [#info-value(info.school)],
-    [#info-key("学科/专业")], [#text(weight: "bold")[：]], [#info-value(info.major)],
-    [#info-key("申请学位")], [#text(weight: "bold")[：]], [#info-value(info.degree)],
+    [#info-key("学院")], [#text(weight: "bold")[：]], [#info-value(info.school)],
+    [#info-key("专业名称")], [#text(weight: "bold")[：]], [#info-value(info.major)],
+    [申请学位层次], [#text(weight: "bold")[：]], [#info-value(info.degree)],
   )
 
-  linebreak()
+  v(5em)
 
   align(
     center,
-    text(font: ziti.songti, size: zihao.sihao, weight: "bold")[#datetime-display(date)],
+    text(font: ziti.songti, size: zihao.sihao, weight: "bold")[#datetime-display-without-day(date)],
   )
 
   pagebreak(

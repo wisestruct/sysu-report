@@ -14,7 +14,10 @@
     doctype: doctype,
     twoside: twoside,
   )
-  show: main-text-first-heading.with(twoside: twoside)
+  show: main-text-first-heading.with(
+    doctype: doctype,
+    twoside: twoside,
+  )
   show: other-heading
 
   body

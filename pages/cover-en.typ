@@ -1,5 +1,5 @@
 #import "../utils/style.typ": ziti, zihao
-#import "../utils/datetime-display.typ": datetime-en-display
+#import "../utils/datetime-display.typ": datetime-en-display, datetime-en-display-without-day
 
 #let cover-en-page(
   date: datetime.today(),
@@ -11,9 +11,12 @@
   let cover-en-title = if doctype == "doctor" {
     "A Dissertation Submitted to
     Shanghai Jiao Tong University for the Degree of Doctor"
-  } else {
+  } else if doctype == "master" {
     "A Dissertation Submitted to
     Shanghai Jiao Tong University for the Degree of Master"
+  } else {
+    "A Dissertation Submitted to
+    Shanghai Jiao Tong University for the Degree of Bachelor"
   }
 
   align(
@@ -84,7 +87,11 @@
 
       Shanghai, P.R. China
 
-      #datetime-en-display(date)
+      #if doctype == "bachelor" {
+        datetime-en-display-without-day(date)
+      } else {
+        datetime-en-display(date)
+      }
     ],
   )
 

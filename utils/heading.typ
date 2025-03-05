@@ -3,19 +3,20 @@
 
 #let no-numbering-first-heading(body) = {
   show heading.where(level: 1): set align(center)
+  show heading: set par(justify: false)
   set heading(numbering: none)
   show heading.where(level: 1): it => {
     set text(
-    // 数字用 Times Roman，中文用黑体，均为四号字，加粗
-    font: ziti.heiti,
-    weight: "bold",
-    size: zihao.sanhao
-  )
+      // 数字用 Times Roman，中文用黑体，均为四号字，加粗
+      font: ziti.heiti,
+      weight: "bold",
+      size: zihao.sanhao,
+    )
     set par(
-    // 无缩进，行距18磅
-    first-line-indent: 0em,
-    leading: 18pt
-  )
+      // 无缩进，行距18磅
+      first-line-indent: 0em,
+      leading: 18pt,
+    )
     //前后间距分别为24磅和6磅
     pagebreak()
     v(24pt)
@@ -26,13 +27,16 @@
 }
 
 #let main-text-first-heading(
+  doctype: "master",
   twoside: false,
   body,
 ) = {
   show heading.where(level: 1): set align(center)
   set heading(
     numbering: numbly(
-      "第{1}章 ",
+      if doctype == "bachelor" {
+        "第{1:一}章 "
+      } else { "第{1}章 " },
       "{1}.{2} ",
       "{1}.{2}.{3} ",
       "{1}.{2}.{3}.{4} ",
@@ -40,16 +44,16 @@
   )
   show heading.where(level: 1): it => {
     set text(
-    // 数字用 Times Roman，中文用黑体，均为四号字，加粗
-    font: ziti.heiti,
-    weight: "bold",
-    size: zihao.sanhao
-  )
+      // 数字用 Times Roman，中文用黑体，均为四号字，加粗
+      font: ziti.heiti,
+      weight: "bold",
+      size: zihao.sanhao,
+    )
     set par(
-    // 无缩进，行距18磅
-    first-line-indent: 0em,
-    leading: 18pt
-  )
+      // 无缩进，行距18磅
+      first-line-indent: 0em,
+      leading: 18pt,
+    )
     //前后间距分别为24磅和6磅
     pagebreak(
       weak: true,
@@ -66,31 +70,36 @@
 }
 
 #let appendix-first-heading(
+  doctype: "master",
   twoside: false,
   body,
 ) = {
   show heading.where(level: 1): set align(center)
   set heading(
-    numbering: numbly(
-      "附录{1:A} ",
-      "{1:A}.{2} ",
-      "{1:A}.{2}.{3} ",
-      "{1:A}.{2}.{3}.{4} ",
-    ),
+    numbering: if doctype == "bachelor" {
+      it => { h(-0.5em) }
+    } else {
+      numbly(
+        "附录{1:A} ",
+        "{1:A}.{2} ",
+        "{1:A}.{2}.{3} ",
+        "{1:A}.{2}.{3}.{4} ",
+      )
+    },
   )
   counter(heading).update(0)
   show heading.where(level: 1): it => {
     set text(
-    // 数字用 Times Roman，中文用黑体，均为四号字，加粗
-    font: ziti.heiti,
-    weight: "bold",
-    size: zihao.sanhao
-  )
+      // 数字用 Times Roman，中文用黑体，均为四号字，加粗
+      font: ziti.heiti,
+      weight: "bold",
+      size: zihao.sanhao,
+    )
     set par(
-    // 无缩进，行距18磅
-    first-line-indent: 0em,
-    leading: 18pt
-  )
+      // 无缩进，行距18磅
+      first-line-indent: 0em,
+      leading: 18pt,
+    )
     //前后间距分别为24磅和6磅
     pagebreak(
       weak: true,
@@ -98,9 +107,13 @@
         "odd"
       },
     )
-    
+
     v(24pt)
-    counter(heading).display() + h(1em) + it.body
+    if doctype == "bachelor" {
+      it.body
+    } else {
+      counter(heading).display() + h(1em) + it.body
+    }
     v(18pt)
   }
   body
@@ -109,16 +122,16 @@
 #let other-heading(body) = {
   show heading.where(level: 2): it => {
     set text(
-    // 数字用 Times Roman，中文用黑体，均为四号字，加粗
-    font: ziti.heiti,
-    weight: "bold",
-    size: zihao.sihao
-  )
+      // 数字用 Times Roman，中文用黑体，均为四号字，加粗
+      font: ziti.heiti,
+      weight: "bold",
+      size: zihao.sihao,
+    )
     set par(
-    // 无缩进，行距18磅
-    first-line-indent: 0em,
-    leading: 18pt
-  )
+      // 无缩进，行距18磅
+      first-line-indent: 0em,
+      leading: 18pt,
+    )
     //前后间距分别为24磅和6磅
     v(24pt)
     counter(heading).display() + h(1em) + it.body
@@ -129,16 +142,16 @@
   // 设置三级标题
   show heading.where(level: 3): it => {
     set text(
-    // 数字用 Times Roman，中文用黑体，均为小四号字，加粗
-    font: ziti.heiti,
-    weight: "bold",
-    size: zihao.xiaosi
-  )
+      // 数字用 Times Roman，中文用黑体，均为小四号字，加粗
+      font: ziti.heiti,
+      weight: "bold",
+      size: zihao.xiaosi,
+    )
     set par(
-    // 无缩进，行距16磅
-    first-line-indent: 0em,
-    leading: 16pt
-  )
+      // 无缩进，行距16磅
+      first-line-indent: 0em,
+      leading: 16pt,
+    )
     //前后间距分别为12磅和6磅
     v(12pt)
     counter(heading).display() + h(1em) + it.body
@@ -148,15 +161,15 @@
   // 设置四级标题
   show heading.where(level: 4): it => {
     set text(
-    // 小四号字，不加粗，字体与正文一致
-    weight: "regular",
-    size: zihao.xiaosi
-  )
+      // 小四号字，不加粗，字体与正文一致
+      weight: "regular",
+      size: zihao.xiaosi,
+    )
     set par(
-    // 无缩进，行距16磅
-    first-line-indent: 0em,
-    leading: 16pt
-  )
+      // 无缩进，行距16磅
+      first-line-indent: 0em,
+      leading: 16pt,
+    )
     //前后间距分别为6磅和6磅
     v(6pt)
     counter(heading).display() + h(1em) + it.body

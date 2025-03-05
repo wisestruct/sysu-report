@@ -21,6 +21,7 @@
   show: no-numbering-page-header.with(
     doctype: doctype,
     twoside: twoside,
+    bachelor-ackn: if doctype == "bachelor" { true } else { false },
   )
   show: no-numbering-first-heading
 

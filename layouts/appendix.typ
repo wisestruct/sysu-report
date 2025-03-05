@@ -7,7 +7,7 @@
   body,
 ) = {
   show: appendix-page-header.with(doctype: doctype, twoside: twoside)
-  show: appendix-first-heading.with(twoside: twoside)
+  show: appendix-first-heading.with(doctype: doctype, twoside: twoside)
 
   body
 }

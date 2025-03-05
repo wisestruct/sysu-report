@@ -1,6 +1,7 @@
 #import "../utils/style.typ": ziti, zihao
 
 #let outline-page(
+  doctype: "master",
   twoside: false,
   info: (:),
 ) = {
@@ -10,7 +11,11 @@
 
   context outline(
     title: [目#h(1em)录],
-    target: selector(heading).after(here()),
+    target: if doctype == "bachelor" {
+      selector(heading)
+    } else {
+      selector(heading).after(here())
+    },
     indent: 2em,
     depth: 3,
   )
