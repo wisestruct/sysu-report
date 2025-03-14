@@ -21,7 +21,7 @@
   achievement,
   summary-en,
 ) = documentclass(
-  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
+  doctype: "bachelor", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
   twoside: false, // 双面模式
   anonymous: false, // 盲审模式
@@ -235,7 +235,7 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
 
 // 参考文献
 #bib(
-  bibfunc: bibliography("ref.bib", full: false),
+  bibfunc: bibliography.with("ref.bib"),
 ) // full: false 表示只显示已引用的文献，不显示未引用的文献；true 表示显示所有文献
 
 #show: appendix

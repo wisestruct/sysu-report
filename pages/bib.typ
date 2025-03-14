@@ -1,5 +1,6 @@
 #import "../utils/header.typ": no-numbering-page-header
 #import "../utils/heading.typ": no-numbering-first-heading
+#import "../utils/bilingual-bibliography.typ": bilingual-bibliography
 
 #let bibliography-page(
   doctype: "master",
@@ -20,13 +21,11 @@
   )
   show: no-numbering-first-heading
 
-  set bibliography(
+  bilingual-bibliography(
+    bibliography: bibfunc,
     title: if doctype == "bachelor" { "参  考  文  献" } else { "参考文献" },
-    style: "gb-7714-2015-numeric",
     full: full,
   )
-
-  bibfunc
 
   pagebreak(
     weak: true,

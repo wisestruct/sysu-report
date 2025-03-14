@@ -108,6 +108,7 @@
     declare: (..args) => {
       declare-page(
         ..args,
+        doctype: doctype,
         twoside: twoside,
         anonymous: anonymous,
         info: info + args.named().at("info", default: (:)),
