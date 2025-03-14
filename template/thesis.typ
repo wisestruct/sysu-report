@@ -21,7 +21,7 @@
   achievement,
   summary-en,
 ) = documentclass(
-  doctype: "bachelor", // 文档类型: "master" | "doctor" | "bachelor"
+  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
   twoside: false, // 双面模式
   anonymous: false, // 盲审模式

@@ -79,10 +79,8 @@
     [申请学位层次], [#text(weight: "bold")[：]], [#info-value(info.degree)],
   )
 
-  v(5em)
-
   align(
-    center,
+    center + bottom,
     text(font: ziti.songti, size: zihao.sihao, weight: "bold")[#datetime-display-without-day(date)],
   )
 
