@@ -8,13 +8,17 @@
   anonymous: false,
   info: (:),
 ) = {
+  v(0.3cm)
+
   align(
     center,
     image(
       "../assets/sjtu-logo.png",
-      width: 3cm,
+      width: 2.79cm,
     ),
   )
+
+  v(0.4cm)
 
   let cover-title = "上海交通大学学位论文"
 
@@ -23,14 +27,14 @@
     text(font: ziti.songti, size: zihao.xiaoer)[#cover-title],
   )
 
-  v(3.6cm)
+  v(1.86cm)
 
   align(
     center,
     text(font: ziti.songti, size: zihao.erhao, weight: "bold")[#info.title],
   )
 
-  v(4cm)
+  v(1fr)
 
   let info-key(zh) = (distr(zh, w: 4em))
 
@@ -55,7 +59,7 @@
     columns: (37%, 1%, 62%),
     inset: (right: 0em),
     column-gutter: (-0.3em, 1em),
-    row-gutter: 0.7em,
+    row-gutter: 0.81em,
     [#info-key("姓名")],
     [#text(weight: "bold")[：]],
     [#if anonymous { } else {
@@ -79,10 +83,14 @@
     [申请学位层次], [#text(weight: "bold")[：]], [#info-value(info.degree)],
   )
 
+  v(2.8cm)
+
   align(
-    center + bottom,
+    center,
     text(font: ziti.songti, size: zihao.sihao, weight: "bold")[#datetime-display-without-day(date)],
   )
+
+  v(2.45cm)
 
   pagebreak(
     weak: true,
