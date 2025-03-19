@@ -13,14 +13,6 @@
   fonts: (:),
   it,
 ) = {
-  info = (
-    (
-      title: "上海交通大学学位论文格式模板",
-      author: "张三",
-    )
-      + info
-  )
-
   if twoside {
     context {
       if calc.odd(counter(page).get().first()) {
@@ -53,7 +45,7 @@
 
   set document(
     title: info.title,
-    author: info.author,
+    author: info.name,
   )
 
   it
