@@ -4,7 +4,7 @@
   bibliography: none,
   title: "参考文献",
   full: false,
-  style: "gb-7714-2015-numeric",
+  style: "shanghai-jiao-tong-university.csl",
   mapping: (:),
   extra-comma-before-et-al-trans: false,
   // 用于控制多位译者时表现为 `et al. tran`(false) 还是 `et al., tran`(true)
@@ -46,6 +46,13 @@
     // 判断是否为中文文献：去除特定词组后，仍有至少两个连续汉字。
     let pureittext = ittext.replace(regex("[等卷册和版本章期页篇译间者(不详)]"), "")
     if pureittext.find(regex("\p{sc=Hani}{2,}")) != none {
+      // 新增功能：将带有“标准”两个字的一行中的 [Z] 替换为 [S]
+      ittext = ittext.replace(
+        regex("标准.*\[Z\]"),
+        itt => {
+          itt.text.replace(regex("\[Z\]"), "[S]")
+        },
+      )
       ittext
     } else {
       // 若不是中文文献，进行替换

@@ -6,7 +6,7 @@
   doctype: "master",
   twoside: false,
   bibfunc: none,
-  full: true,
+  full: false,
 ) = {
   pagebreak(
     weak: true,
