@@ -1,4 +1,5 @@
 #import "../utils/style.typ": ziti
+#import "../utils/list-enum-align.typ": *
 #import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "@preview/i-figured:0.2.4"
 
@@ -42,6 +43,10 @@
 
   set list(indent: 2em)
   set enum(indent: 2em)
+  set terms(indent: 2em)
+
+  show: align-list-marker-with-baseline
+  show: align-enum-marker-with-baseline
 
   set document(
     title: info.title,
