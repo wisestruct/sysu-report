@@ -4,7 +4,7 @@
 #let no-numbering-first-heading(body) = {
   show heading.where(level: 1): set align(center)
   show heading: set par(justify: false)
-  set heading(numbering: none)
+  set heading(numbering: none, supplement: auto)
   show heading.where(level: 1): it => {
     set text(
       // 数字用 Times Roman，中文用黑体，均为四号字，加粗
@@ -77,7 +77,12 @@
   show heading.where(level: 1): set align(center)
   set heading(
     numbering: if doctype == "bachelor" {
-      it => { h(-0.5em) }
+      numbly(
+        "附录{1} ",
+        "{1}.{2} ",
+        "{1}.{2}.{3} ",
+        "{1}.{2}.{3}.{4} ",
+      )
     } else {
       numbly(
         "附录{1:A} ",
@@ -86,6 +91,7 @@
         "{1:A}.{2}.{3}.{4} ",
       )
     },
+    supplement: [附录],
   )
   counter(heading).update(0)
   show heading.where(level: 1): it => {
@@ -110,7 +116,7 @@
 
     v(24pt)
     if doctype == "bachelor" {
-      it.body
+      it.body + "（" + counter(heading).display() + h(-0.2em) + "）"
     } else {
       counter(heading).display() + h(1em) + it.body
     }
@@ -133,7 +139,7 @@
       leading: 18pt,
     )
     //前后间距分别为24磅和6磅
-    v(24pt)
+    v(12pt)
     counter(heading).display() + h(1em) + it.body
     v(6pt)
   }
@@ -153,7 +159,7 @@
       leading: 16pt,
     )
     //前后间距分别为12磅和6磅
-    v(12pt)
+    v(9pt)
     counter(heading).display() + h(1em) + it.body
     v(6pt)
   }

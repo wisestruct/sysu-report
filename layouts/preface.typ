@@ -7,6 +7,14 @@
   twoside: false,
   it,
 ) = {
+  set page(
+    margin: if doctype == "bachelor" {
+      (top: 3.75cm, bottom: 2.54cm, left: 3.17cm, right: 3.17cm)
+    } else {
+      (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm)
+    },
+  )
+
   show footnote.entry: set text(font: ziti.songti, size: zihao.xiaowu)
 
   show: no-numbering-page-header.with(
@@ -27,8 +35,10 @@
   show figure.where(kind: "image-en"): set text(size: zihao.wuhao, weight: "bold")
   show figure.where(kind: "table"): set text(size: zihao.wuhao, weight: "bold")
   show figure.where(kind: "table-en"): set text(size: zihao.wuhao, weight: "bold")
+  show figure.where(kind: "algorithm"): set text(size: zihao.wuhao, weight: "bold")
   show figure.where(kind: "table"): set figure.caption(position: top)
   show figure.where(kind: "table-en"): set figure.caption(position: top)
+  show figure.where(kind: "algorithm"): set figure.caption(position: top)
   show figure: set block(breakable: true)
   let xubiao = state("xubiao")
 

@@ -25,7 +25,7 @@
   )
   show: no-numbering-first-heading
 
-  heading(level: 1)[致#h(1em)谢]
+  heading(level: 1)[致#h(if doctype == "bachelor" {1.5em} else {1em})谢]
 
   body
 

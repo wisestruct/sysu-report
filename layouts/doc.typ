@@ -14,17 +14,14 @@
   fonts: (:),
   it,
 ) = {
-  if twoside {
-    context {
-      if calc.odd(counter(page).get().first()) {
-        set page(margin: (top: 3.5cm, bottom: 4cm, left: 3cm, right: 2.5cm))
-      } else {
-        set page(margin: (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 3cm))
-      }
-    }
-  } else {
-    set page(margin: (top: 3.5cm, bottom: 4cm, left: 3cm, right: 2.5cm))
-  }
+  set page(
+    margin: if doctype == "bachelor" {
+      (top: 2.54cm, bottom: 2.54cm, left: 3.17cm, right: 3.17cm)
+    } else {
+      (top: 3.5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm)
+    },
+  )
+
   set text(hyphenate: false, font: ziti.songti)
   set par(leading: 20pt, first-line-indent: (amount: 2em, all: true))
 
@@ -33,13 +30,6 @@
   show table: set align(center)
 
   show figure.caption: set par(leading: 10pt, justify: false)
-
-  show heading: i-figured.reset-counters.with(extra-kinds: ("image",))
-  show figure: i-figured.show-figure.with(
-    extra-prefixes: (image: "img:"),
-    numbering: if doctype == "bachelor" { "1-1" } else { "1.1" },
-  )
-  show math.equation: i-figured.show-equation.with(numbering: if doctype == "bachelor" { "(1-1)" } else { "(1.1)" })
 
   set list(indent: 2em)
   set enum(indent: 2em)

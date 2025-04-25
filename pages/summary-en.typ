@@ -29,6 +29,8 @@
 
   heading(title, outlined: false)
 
+  set par(leading: 11pt, spacing: 11pt)
+
   body
 
   pagebreak(

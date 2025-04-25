@@ -52,6 +52,8 @@
         headingTitle = ""
       }
 
+      block(height: if doctype == "bachelor" { 1cm } else { 1.75cm })
+
       if twoside {
         // 奇数页和偶数页的页眉是对称的
         if calc.odd(counter(page).get().first()) {
@@ -94,6 +96,7 @@
       line(length: 100%, stroke: 2.2416pt)
       v(-13pt)
       line(length: 100%, stroke: 0.7472pt)
+      block(height: 1fr)
     },
   )
 
@@ -139,6 +142,8 @@
           "第" + str(counter(heading).get().first()) + "章"
         }
       }
+
+      block(height: if doctype == "bachelor" { 1cm } else { 1.75cm })
 
       if twoside {
         // 奇数页和偶数页的页眉是对称的
@@ -188,6 +193,7 @@
       line(length: 100%, stroke: 2.2416pt)
       v(-13pt)
       line(length: 100%, stroke: 0.7472pt)
+      block(height: 1fr)
     },
   )
   it
@@ -235,6 +241,8 @@
         }
       }
 
+      block(height: if doctype == "bachelor" { 1cm } else { 1.75cm })
+
       if twoside {
         // 奇数页和偶数页的页眉是对称的
         if calc.odd(counter(page).get().first()) {
@@ -283,6 +291,7 @@
       line(length: 100%, stroke: 2.2416pt)
       v(-13pt)
       line(length: 100%, stroke: 0.7472pt)
+      block(height: 1fr)
     },
   )
   it

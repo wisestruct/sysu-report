@@ -19,6 +19,8 @@
     Shanghai Jiao Tong University for the Degree of Bachelor"
   }
 
+  v(if doctype == "bachelor" { 2cm } else { 0cm })
+
   align(
     center,
     text(
@@ -27,7 +29,7 @@
     )[#cover-en-title],
   )
 
-  v(3.1cm)
+  v(if doctype == "bachelor" { 2.5cm } else { 3.1cm })
 
   align(
     center,
@@ -50,6 +52,7 @@
   let info-value-en(en) = (
     text(
       en,
+      weight: if doctype == "bachelor" { 700 } else { 500 },
       size: zihao.sanhao,
     )
   )

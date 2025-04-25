@@ -8,7 +8,6 @@
   body,
 ) = {
   set text(font: ziti.songti, size: zihao.xiaosi)
-  set par(first-line-indent: 1.5em, leading: 16pt, spacing: 16pt)
 
   if doctype == "bachelor" {
     heading(level: 1)[#text(font: "Arial")[ABSTRACT]]
@@ -16,12 +15,20 @@
     heading(level: 1)[Abstract]
   }
 
+  set par(
+    first-line-indent: if doctype == "bachelor" { 2em } else { 1.5em },
+    leading: if doctype == "bachelor" { 11pt } else { 16pt },
+    spacing: if doctype == "bachelor" { 11pt } else { 16pt },
+  )
+
   body
 
   linebreak()
   linebreak()
 
-  [*Keywords*：#(("",)+ keywords.intersperse(", ")).sum()]
+  [*Key words: *#(("",)+ keywords.intersperse(", ")).sum()]
+
+  set par(spacing: 16pt)
 
   pagebreak(
     weak: true,

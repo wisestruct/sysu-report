@@ -6,7 +6,6 @@
   info: (:),
   body,
 ) = {
-
   set text(font: ziti.songti, size: zihao.xiaosi)
   set par(first-line-indent: 2em, leading: 16pt, spacing: 16pt)
 
@@ -17,7 +16,7 @@
   linebreak()
   linebreak()
 
-  [*关键词*：#(("",)+ keywords.intersperse("，")).sum()]
+  [*关键词：*#(("",)+ keywords.intersperse("，")).sum()]
 
   pagebreak(
     weak: true,

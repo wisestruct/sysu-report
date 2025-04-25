@@ -145,7 +145,8 @@
 == 图表格式
 
 #figure(
-  [#figure(
+  [
+    #figure(
       image(
         "figures/energy-distribution.png",
         width: 70%,
@@ -154,7 +155,8 @@
       kind: "image",
       supplement: [图],
       caption: [内热源沿径向的分布], // 中文图例
-    )<image>],
+    )<image> // 图的引用添加在此处
+  ],
   gap: 1em,
   kind: "image-en",
   supplement: [Figure],
@@ -210,7 +212,7 @@
   kind: "table",
   supplement: [表],
   caption: [高频感应加热的基本参数], // 中文表例
-)<table>
+)<table> // 表的引用添加在此处
 
 == 公式格式
 
@@ -244,7 +246,7 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Al
 // 请根据文档类型，自行选择 if-else 中的内容
 
 #if doctype == "bachelor" [
-  = 符号与标记（附录1）
+  = 符号与标记
 
 ] else [
   = 实验环境
