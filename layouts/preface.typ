@@ -40,6 +40,8 @@
   show figure.where(kind: "table-en"): set figure.caption(position: top)
   show figure.where(kind: "algorithm"): set figure.caption(position: top)
   show figure: set block(breakable: true)
+  show figure.where(kind: "image"): set block(sticky: true)
+  show figure.where(kind: "image-en"): set block(sticky: true)
   let xubiao = state("xubiao")
 
   show table: set text(size: zihao.wuhao, weight: "regular")

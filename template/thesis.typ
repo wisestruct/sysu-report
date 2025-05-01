@@ -219,7 +219,7 @@
 // 公式的引用请以 eqt 开头
 我要引用 @eqt:equation。
 
-$ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1/mu) times (nabla times Alpha) + J_0 = 0 $<equation>
+$ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times Alpha) + J_0 = 0 $<equation>
 
 == 本章小结
 
