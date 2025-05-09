@@ -1,4 +1,4 @@
-#import "../lib.typ": documentclass
+#import "../lib.typ": documentclass, word-count-cjk, total-words
 
 #let (
   doctype,
@@ -16,6 +16,8 @@
   abstract,
   abstract-en,
   outline,
+  image-outline,
+  table-outline,
   bib,
   acknowledgement,
   achievement,
@@ -24,6 +26,7 @@
   doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
   twoside: false, // 双面模式
+  print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
   anonymous: false, // 盲审模式
   info: (
     student_id: "520XXXXXXXX",
@@ -74,7 +77,12 @@
 
 #outline()
 
+// #image-outline() // 插图目录，按需设置
+
+// #table-outline() // 表格目录，按需设置
+
 #show: mainmatter
+#show: word-count-cjk // 正文字数统计
 
 = 绪论
 
@@ -231,6 +239,8 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times 
 
 本文主要……
 
+正文与附录的总字数为：#total-words。 // 字数统计功能，仅供参考
+
 == 研究展望
 
 更深入的研究……
@@ -247,6 +257,7 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times 
 
 #if doctype == "bachelor" [
   = 符号与标记
+
 
 ] else [
   = 实验环境

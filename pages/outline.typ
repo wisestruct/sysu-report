@@ -58,3 +58,31 @@
     },
   )
 }
+
+#let image-outline-page(
+  twoside: false,
+  info: (:),
+) = {
+  i-figured.outline(target-kind: "image", title: "插    图")
+
+  pagebreak(
+    weak: true,
+    to: if twoside {
+      "odd"
+    },
+  )
+}
+
+#let table-outline-page(
+  twoside: false,
+  info: (:),
+) = {
+  i-figured.outline(target-kind: "table", title: "表    格")
+
+  pagebreak(
+    weak: true,
+    to: if twoside {
+      "odd"
+    },
+  )
+}

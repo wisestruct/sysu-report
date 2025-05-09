@@ -27,6 +27,18 @@
     numbering: if doctype == "bachelor" { "1-1" } else { "1.1" },
   )
   show math.equation: i-figured.show-equation.with(numbering: if doctype == "bachelor" { "(1-1)" } else { "(1.1)" })
+  show math.equation: set text(
+    font: (
+      (name: "Noto Sans CJK SC", covers: regex("\p{script=Han}")),
+      "Cambria Math",
+    ),
+  )
+  set math.equation(number-align: end + bottom)
+
+  context [
+    #metadata(state("total-words-cjk").final()) <total-words>
+    #metadata(state("total-characters").final()) <total-chars>
+  ]
 
   body
 }

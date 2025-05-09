@@ -1,4 +1,5 @@
 #import "utils/style.typ": ziti, zihao
+#import "utils/word-counter.typ": *
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
 #import "layouts/mainmatter.typ": mainmatter
@@ -9,7 +10,7 @@
 #import "pages/declare.typ": declare-page
 #import "pages/abstract.typ": abstract-page
 #import "pages/abstract-en.typ": abstract-en-page
-#import "pages/outline.typ": outline-page
+#import "pages/outline.typ": outline-page, image-outline-page, table-outline-page
 #import "pages/bib.typ": bibliography-page
 #import "pages/acknowledgement.typ": acknowledgement-page
 #import "pages/achievement.typ": achievement-page
@@ -20,6 +21,7 @@
   date: datetime.today(),
   twoside: false,
   anonymous: false,
+  print: false,
   info: (:),
 ) = {
   date = date
@@ -45,12 +47,14 @@
     date: date,
     twoside: twoside,
     anonymous: anonymous,
+    print: print,
     info: info,
     doc: (..args) => {
       doc(
         ..args,
         doctype: doctype,
         twoside: twoside,
+        print: print,
         info: info + args.named().at("info", default: (:)),
       )
     },
@@ -133,6 +137,18 @@
       outline-page(
         ..args,
         doctype: doctype,
+        twoside: twoside,
+      )
+    },
+    image-outline: (..args) => {
+      image-outline-page(
+        ..args,
+        twoside: twoside,
+      )
+    },
+    table-outline: (..args) => {
+      table-outline-page(
+        ..args,
         twoside: twoside,
       )
     },
