@@ -35,7 +35,7 @@
     text(font: ziti.songti, size: zihao.erhao, weight: "bold")[#info.title],
   )
 
-  v(4cm)
+  v(1fr)
 
   let info-key(zh) = (distr(zh, w: 5em))
 
@@ -90,6 +90,8 @@
     center,
     text(font: ziti.songti, size: zihao.sihao, weight: "bold")[#datetime-display(date)],
   )
+
+  v(0.2cm)
 
   pagebreak(
     weak: true,
