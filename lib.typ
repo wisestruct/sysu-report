@@ -1,5 +1,6 @@
 #import "utils/style.typ": ziti, zihao
 #import "utils/word-counter.typ": *
+#import "utils/figurex.typ": *
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
 #import "layouts/mainmatter.typ": mainmatter
@@ -10,11 +11,12 @@
 #import "pages/declare.typ": declare-page
 #import "pages/abstract.typ": abstract-page
 #import "pages/abstract-en.typ": abstract-en-page
-#import "pages/outline.typ": outline-page, image-outline-page, table-outline-page
+#import "pages/outline.typ": outline-page, image-outline-page, table-outline-page, algorithm-outline-page
 #import "pages/bib.typ": bibliography-page
 #import "pages/acknowledgement.typ": acknowledgement-page
 #import "pages/achievement.typ": achievement-page
 #import "pages/summary-en.typ": summary-en-page
+#import "@preview/lovelace:0.3.0": *
 
 #let documentclass(
   doctype: "master",
@@ -148,6 +150,12 @@
     },
     table-outline: (..args) => {
       table-outline-page(
+        ..args,
+        twoside: twoside,
+      )
+    },
+    algorithm-outline: (..args) => {
+      algorithm-outline-page(
         ..args,
         twoside: twoside,
       )

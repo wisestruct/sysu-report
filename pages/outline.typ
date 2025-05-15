@@ -86,3 +86,17 @@
     },
   )
 }
+
+#let algorithm-outline-page(
+  twoside: false,
+  info: (:),
+) = {
+  i-figured.outline(target-kind: "algorithm", title: "算    法")
+
+  pagebreak(
+    weak: true,
+    to: if twoside {
+      "odd"
+    },
+  )
+}

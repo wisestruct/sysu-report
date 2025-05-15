@@ -1,4 +1,4 @@
-#import "../lib.typ": documentclass, word-count-cjk, total-words
+#import "../lib.typ": *
 
 #let (
   doctype,
@@ -18,12 +18,13 @@
   outline,
   image-outline,
   table-outline,
+  algorithm-outline,
   bib,
   acknowledgement,
   achievement,
   summary-en,
 ) = documentclass(
-  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
+  doctype: "bachelor", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
   twoside: false, // 双面模式
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
@@ -77,9 +78,11 @@
 
 #outline()
 
-// #image-outline() // 插图目录，按需设置
+#image-outline() // 插图目录，按需设置
 
-// #table-outline() // 表格目录，按需设置
+#table-outline() // 表格目录，按需设置
+
+#algorithm-outline() // 算法目录，按需设置
 
 #show: mainmatter
 #show: word-count-cjk // 正文字数统计
@@ -152,82 +155,94 @@
 
 == 图表格式
 
-#figure(
-  [
-    #figure(
-      image(
-        "figures/energy-distribution.png",
-        width: 70%,
-      ),
-      gap: 0.3em,
-      kind: "image",
-      supplement: [图],
-      caption: [内热源沿径向的分布], // 中文图例
-    )<image> // 图的引用添加在此处
-  ],
-  gap: 1em,
-  kind: "image-en",
-  supplement: [Figure],
-  caption: [Energy distribution along radial], // 英文图例，本科生模板直接删除即可
+=== 单张图片
+
+#imagex(
+  image(
+    "figures/energy-distribution.png",
+    width: 70%,
+  ),
+  caption: [内热源沿径向的分布],
+  caption-en: [Energy distribution along radial],
+  label-name: "image",
 )
-#v(1em)
+
+=== 多个子图
+
+#imagex(
+  subimagex(
+    image("figures/emissions-variation.png"),
+    caption: [温室气体排放量随时间变化的情况],
+    // caption-en: [Greenhouse gas emissions over time],
+    label-name: "test1",
+  ),
+  subimagex(
+    image("figures/emissions-2050.png"),
+    caption: [2050 年的温室气体排放量],
+    // caption-en: [Greenhouse gas emissions in 2050],
+    label-name: "test2",
+  ),
+  columns: (1fr, 1fr),
+  caption: [不同情景下上海市乘用车的温室气体排放量],
+  // caption-en: [Greenhouse gas emissions from passenger cars in Shanghai under different scenarios],
+  label-name: "subfigures",
+)
 
 // 图的引用请以 img 开头
-如 @img:image 所示，......
+如@img:image 和@img:subfigures:test2 所示，......
 
 // 表的引用请以 tbl 开头
-我们来看 @tbl:table，
+我们来看@tbl:table，
 
-// 因为涉及续表，所以表的实现比较复杂且不易抽象成函数
-#let xubiao = state("xubiao")
-#figure(
-  figure(
-    table(
-      // 每列比例
-      columns: (25%, 25%, 25%, 25%),
-      table.header(
-        table.cell(
-          // 列数
-          colspan: 4,
-          {
-            context if xubiao.get() {
-              align(left)[*续@tbl:table*] // 请一定要在末尾给表添加标签(如<table>)，并在此处修改引用
-            } else {
-              v(-0.6em)
-              xubiao.update(true)
-            }
-          },
-        ),
-        table.hline(),
-        // 表头部分
-        [感应频率 #linebreak() (kHz)],
-        [感应发生器功率 #linebreak() (%×80kW)],
-        [工件移动速度 #linebreak() (mm/min)],
-        [感应圈与零件间隙 #linebreak() (mm)],
-        table.hline(stroke: 0.5pt),
-      ),
-      // 表格内容
-      ..for i in range(15) {
-        ([250], [88], [5900], [1.65])
-      },
-      table.hline(),
-    ),
-    kind: "table-en",
-    supplement: [Table],
-    caption: [XXXXXXX], // 英文表例，本科生模板直接删除
+#tablex(
+  ..for i in range(30) {
+    ([250], [88], [5900], [1.65])
+  },
+  header: (
+    [感应频率 #linebreak() (kHz)],
+    [感应发生器功率 #linebreak() (%×80kW)],
+    [工件移动速度 #linebreak() (mm/min)],
+    [感应圈与零件间隙 #linebreak() (mm)],
   ),
-  gap: 1em,
-  kind: "table",
-  supplement: [表],
-  caption: [高频感应加热的基本参数], // 中文表例
-)<table> // 表的引用添加在此处
+  columns: (25%, 25%, 25%, 25%),
+  caption: [高频感应加热的基本参数],
+  caption-en: [XXXXXXX],
+  label-name: "table",
+)
 
 == 公式格式
 
 // 公式的引用请以 eqt 开头
-我要引用 @eqt:equation。
+我要引用@eqt:equation。
 
 $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times Alpha) + J_0 = 0 $<equation>
+
+== 算法格式
+
+// 算法的引用请以 algo 开头
+我们可以通过@algo:fibonacci 来计算斐波那契数列第 $n$ 项。
+
+#v(15em)
+
+#let tmp = math.italic("tmp")
+#algox(
+  label-name: "fibonacci",
+  caption: [斐波那契数列计算],
+  pseudocode-list(line-gap: 1em, indentation: 2em)[
+    - #h(-1.5em) *input:* integer $n$
+    - #h(-1.5em) *output:* Fibonacci number $F(n)$
+    + *if* $n = 0$ *then return* $0$
+    + *if* $n = 1$ *then return* $1$
+    + $a <- 0$
+    + $b <- 1$
+    + *for* $i$ *from* $2$ *to* $n$ *do*
+      + $tmp <- a + b$
+      + $a <- b$
+      + $b <- tmp$
+    + *end*
+    + *return* $b$
+  ],
+)
 
 == 本章小结
 
@@ -258,6 +273,14 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times 
 #if doctype == "bachelor" [
   = 符号与标记
 
+  #table(
+    columns: 2,
+    align: (right, left),
+    column-gutter: 1em,
+    row-gutter: 0.5em,
+    [$epsilon$], [介电常数],
+    [$mu$], [磁导率],
+  )
 
 ] else [
   = 实验环境
@@ -269,6 +292,7 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times 
   == 软件工具
 
   ......
+
 ]
 
 #if doctype == "bachelor" [
