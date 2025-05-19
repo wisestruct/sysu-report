@@ -125,7 +125,11 @@
   body
 }
 
-#let other-heading(body) = {
+#let other-heading(
+  enable-auto-section-pagebreak: false,
+  auto-section-pagebreak-space: 15%,
+  body,
+) = {
   show heading.where(level: 2): it => {
     set text(
       // 数字用 Times Roman，中文用黑体，均为四号字，加粗
@@ -138,6 +142,13 @@
       first-line-indent: 0em,
       leading: 18pt,
     )
+
+    if enable-auto-section-pagebreak {
+      let threshold = auto-section-pagebreak-space
+      block(breakable: false, height: threshold)
+      v(-threshold, weak: true)
+    }
+
     //前后间距分别为24磅和6磅
     v(12pt)
     counter(heading).display() + h(1em) + it.body
@@ -158,6 +169,13 @@
       first-line-indent: 0em,
       leading: 16pt,
     )
+
+    if enable-auto-section-pagebreak {
+      let threshold = auto-section-pagebreak-space
+      block(breakable: false, height: threshold)
+      v(-threshold, weak: true)
+    }
+
     //前后间距分别为12磅和6磅
     v(9pt)
     counter(heading).display() + h(1em) + it.body
@@ -176,6 +194,13 @@
       first-line-indent: 0em,
       leading: 16pt,
     )
+
+    if enable-auto-section-pagebreak {
+      let threshold = auto-section-pagebreak-space
+      block(breakable: false, height: threshold)
+      v(-threshold, weak: true)
+    }
+
     //前后间距分别为6磅和6磅
     v(6pt)
     counter(heading).display() + h(1em) + it.body

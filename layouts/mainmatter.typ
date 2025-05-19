@@ -7,6 +7,8 @@
 #let mainmatter(
   doctype: "master",
   twoside: false,
+  enable-auto-section-pagebreak: false,
+  auto-section-pagebreak-space: 15%,
   body,
 ) = {
   set page(numbering: "1")
@@ -20,7 +22,10 @@
     doctype: doctype,
     twoside: twoside,
   )
-  show: other-heading
+  show: other-heading.with(
+    enable-auto-section-pagebreak: enable-auto-section-pagebreak,
+    auto-section-pagebreak-space: auto-section-pagebreak-space,
+  )
 
   show: preset
 

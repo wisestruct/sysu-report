@@ -24,7 +24,7 @@
   achievement,
   summary-en,
 ) = documentclass(
-  doctype: "bachelor", // 文档类型: "master" | "doctor" | "bachelor"
+  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
   twoside: false, // 双面模式
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
@@ -53,6 +53,7 @@
 #declare(
   confidentialty-level: "internal", // 保密级别: "public" | "internal" | "secret" | "confidential"
   confidentialty-year: 2, // 保密年份数，请根据保密级别的要求填写
+  // date: datetime.today(),
 )
 
 #show: preface
@@ -195,7 +196,7 @@
 我们来看@tbl:table，
 
 #tablex(
-  ..for i in range(30) {
+  ..for i in range(20) {
     ([250], [88], [5900], [1.65])
   },
   header: (
@@ -221,8 +222,6 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times 
 
 // 算法的引用请以 algo 开头
 我们可以通过@algo:fibonacci 来计算斐波那契数列第 $n$ 项。
-
-#v(15em)
 
 #let tmp = math.italic("tmp")
 #algox(

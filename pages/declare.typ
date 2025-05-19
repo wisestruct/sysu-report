@@ -8,6 +8,7 @@
   twoside: false,
   confidentialty-level: "",
   confidentialty-year: 0,
+  date: none,
   info: (:),
 ) = {
   if anonymous {
@@ -46,7 +47,11 @@
     text()[
       学位论文作者签名：#h(6.6em)
 
-      日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+      #if date == none [
+        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+      ] else [
+        日期：#h(-0.25em) #date.display("[year]年  [month]月  [day]日") #h(3.9em)
+      ]
     ],
   )
 
@@ -174,7 +179,11 @@
       text()[
         学位论文作者签名：#h(6.6em)
 
-        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+        #if date == none [
+          日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+        ] else [
+          日期：#h(-0.25em) #date.display("[year]年  [month]月  [day]日") #h(3.9em)
+        ]
       ],
     )
     #colbreak()
@@ -183,7 +192,11 @@
       text()[
         指导教师签名：#h(8.6em)
 
-        日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+        #if date == none [
+          日期：#h(2em) 年 #h(1.5em) 月 #h(1.5em) 日 #h(3.9em)
+        ] else [
+          日期：#h(-0.25em) #date.display("[year]年  [month]月  [day]日") #h(3.9em)
+        ]
       ],
     )
   ]

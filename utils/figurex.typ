@@ -46,13 +46,8 @@
   show table: set text(size: zihao.wuhao, weight: "regular")
   set table(stroke: none)
   let prefix = "tablex-none-label"
-  let none-label = state(prefix, 0)
-  let label-name = label-name
-  if label-name == "" {
-    let id = int(none-label.get())
-    label-name = str("~" + prefix + "-" + str(id))
-    none-label.update(id + 1)
-  }
+  let number = query(figure.where(kind: "table").before(here()))
+  let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let nxt = state("tablex" + label-name, false)
   let new-label = label(label-name)
   let head-label = label("tbl:" + label-name)
@@ -105,12 +100,8 @@
 ) = context {
   let prefix = "algox-none-label"
   let none-label = state(prefix, 0)
-  let label-name = label-name
-  if label-name == "" {
-    let id = int(none-label.get())
-    label-name = str("~" + prefix + "-" + str(id))
-    none-label.update(id + 1)
-  }
+  let number = query(figure.where(kind: "algorithm").before(here()))
+  let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let new-label = label(label-name)
   let head-label = label("algo:" + label-name)
   let nxt = state("algox" + label-name, false)
@@ -170,12 +161,8 @@
 ) = context {
   let prefix = "subimagex-none-label"
   let none-label = state(prefix, 0)
-  let label-name = label-name
-  if label-name == "" {
-    let id = int(none-label.get())
-    label-name = str("~" + prefix + "-" + str(id))
-    none-label.update(id + 1)
-  }
+  let number = query(figure.where(kind: "subimage").before(here()))
+  let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let new-label = label(label-name)
   align(
     center + bottom,
@@ -209,12 +196,8 @@
 ) = context {
   let prefix = "imagex-none-label"
   let none-label = state(prefix, 0)
-  let label-name = label-name
-  if label-name == "" {
-    let id = int(none-label.get())
-    label-name = str("~" + prefix + "-" + str(id))
-    none-label.update(id + 1)
-  }
+  let number = query(figure.where(kind: "image").before(here()))
+  let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let new-label = label(label-name)
   [
     #figure(
