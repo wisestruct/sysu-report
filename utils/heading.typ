@@ -128,8 +128,13 @@
 #let other-heading(
   enable-auto-section-pagebreak: false,
   auto-section-pagebreak-space: 15%,
+  appendix: false,
   body,
 ) = {
+  show heading.where(level: 2): set heading(outlined: if appendix { false } else { true })
+  show heading.where(level: 3): set heading(outlined: if appendix { false } else { true })
+  show heading.where(level: 4): set heading(outlined: if appendix { false } else { true })
+
   show heading.where(level: 2): it => {
     set text(
       // 数字用 Times Roman，中文用黑体，均为四号字，加粗

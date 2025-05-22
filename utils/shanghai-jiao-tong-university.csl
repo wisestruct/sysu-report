@@ -52,7 +52,9 @@
   <!-- 主要责任者 -->
   <macro name="author">
     <names variable="author">
-      <name/>
+      <name name-as-sort-order="all">
+        <name-part name="family" text-case="uppercase"/>
+      </name>
       <substitute>
         <names variable="composer"/>
         <names variable="illustrator"/>

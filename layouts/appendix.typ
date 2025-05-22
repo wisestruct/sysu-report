@@ -1,5 +1,5 @@
 #import "../utils/header.typ": appendix-page-header
-#import "../utils/heading.typ": appendix-first-heading
+#import "../utils/heading.typ": appendix-first-heading, other-heading
 #import "@preview/i-figured:0.2.4"
 
 #let appendix(
@@ -9,6 +9,7 @@
 ) = {
   show: appendix-page-header.with(doctype: doctype, twoside: twoside)
   show: appendix-first-heading.with(doctype: doctype, twoside: twoside)
+  show: other-heading.with(appendix: true)
 
   show heading: i-figured.reset-counters.with(extra-kinds: ("image", "image-en", "table", "table-en", "algorithm"))
   show figure: i-figured.show-figure.with(

@@ -99,7 +99,6 @@
   breakable: true,
 ) = context {
   let prefix = "algox-none-label"
-  let none-label = state(prefix, 0)
   let number = query(figure.where(kind: "algorithm").before(here()))
   let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let new-label = label(label-name)
@@ -160,7 +159,6 @@
   label-name: "",
 ) = context {
   let prefix = "subimagex-none-label"
-  let none-label = state(prefix, 0)
   let number = query(figure.where(kind: "subimage").before(here()))
   let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let new-label = label(label-name)
@@ -195,11 +193,11 @@
   label-name: "",
 ) = context {
   let prefix = "imagex-none-label"
-  let none-label = state(prefix, 0)
   let number = query(figure.where(kind: "image").before(here()))
   let label-name = if label-name == "" { str("~" + prefix + "-" + str(number.len())) } else { label-name }
   let new-label = label(label-name)
   [
+    #v(0.2em)
     #figure(
       [
         #figure(
@@ -215,6 +213,7 @@
       kind: "image-en",
       supplement: [Figure],
     )
+    #v(0.2em)
   ]
   counter(figure.where(kind: "subimage")).update(0)
   counter(figure.where(kind: "subimage-en")).update(0)
