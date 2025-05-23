@@ -1,0 +1,217 @@
+Yu2001:
+  type: book
+  title: 出版集团研究
+  author: 余敏
+  date: 2001
+  publisher:
+    name: 中国书籍出版社
+    location: 北京
+  page-range: 179-193
+Cheng1999:
+  type: chapter
+  title: 1998年长江洪水的成因与减灾对策
+  author: 程根伟
+  date: 1999
+  editor:
+    - 许厚泽
+    - 赵其国
+  page-range: 32-36
+  parent:
+    type: book
+    title: 长江流域洪涝灾害与科技对策
+    publisher:
+      name: 科学出版社
+      location: 北京
+LSC1957:
+  type: periodical
+  title: 图书馆学通讯
+  author: 中国图书馆学会
+  date: 1957
+  publisher:
+    name: 北京图书馆
+    location: 北京
+  issue: 1–4
+Li1999:
+  type: article
+  title: 气候学研究的若干理论问题
+  author:
+    - 李晓东
+    - 张庆红
+    - 叶瑾琳
+  date: 1999
+  page-range: 101-106
+  parent:
+    type: periodical
+    title: "北京大学学报: 自然科学版"
+    issue: 1
+    volume: 35
+Jiang1989:
+  type: patent
+  title: 一种温热外敷药制备方案
+  author: 姜锡洲
+  date: 1989-07-26
+  issue: 中国,88105607.3
+Hopkinson1999:
+  type: web
+  title: "{UNIMARC} and metadata: Dublin core"
+  author: Hopkinson, A.
+  url:
+    value: http://www.ifla.org/IV/ifla64/138-161e.html
+    date: 1999-12-08
+Jiang1998:
+  type: book
+  title: 中国森林群落分类及其群落学特征
+  author:
+    - 蒋有绪
+    - 郭泉水
+    - 马娟
+    - others
+  date: 1998
+  publisher:
+    name: 科学出版社
+    location: 北京
+  page-range: 11-12
+CSTAM1990:
+  type: article
+  title: 第 3 届全国实验流体力学学术会议论文集
+  date: 1990
+  editor: 中国力学学会
+  page-range: 20-24
+  parent:
+    type: proceedings
+    publisher:
+      name: 天津大学出版社
+      location: 天津
+WHO1970:
+  type: report
+  title: "Factors regulating the immune response: report of {WHO} Scientific Group"
+  author: World Health Organization
+  date: 1970
+  publisher:
+    name: WHO
+    location: Geneva
+Zhang1998:
+  type: thesis
+  title: 间断动力系统的随机扰动及其在守恒律方程中的应用
+  author: 张志祥
+  date: 1998
+  publisher:
+    name: 北京大学数学学院
+    location: 北京
+  page-range: 50-55
+HBLZ2001:
+  type: patent
+  title: 一种荒漠化地区生态植被综合培育种植方法
+  author: 河北绿洲生态环境科技有限公司
+  date: 2001-10-24
+  issue: 中国,1129210.5
+  url:
+    value: http://211.152.9.47/sipoasp/zlijs/hyjs-yx-new.asp?recid=01129210.5&leixin
+    date: 2002-05-28
+GBT2659:
+  type: misc
+  title: GB/T 2659-1986 世界各国和地区名称代码
+  author: 国家标准局信息分类编码研究所
+  date: 1988
+  publisher:
+    name: 中国标准出版社
+    location: 北京
+  page-range: 59-92
+Li2000:
+  type: article
+  title: 理想的图书管理员和信息专家的素养与形象
+  author: 李炳穆
+  date: 2000
+  page-range: 5-8
+  parent:
+    type: periodical
+    title: 图书情报工作
+    issue: 2
+Ding2000:
+  type: article
+  title: 数字革命与竞争国际化
+  author: 丁文祥
+  date: 2000-11-20
+  parent:
+    type: newspaper
+    title: 中国青年报
+    issue: 15
+Jiang1999:
+  type: article
+  title: 互联网环境下的信息处理与图书管理系统解决方案
+  author: 江向东
+  date: 1999
+  page-range: "4"
+  url:
+    value: http://www.chinainfo.gov.cn/periodical/qbxb/qbxb99/qbxb990203
+    date: 2000-01-18
+  parent:
+    type: periodical
+    title: 情报学报
+    issue: 2
+    volume: 18
+Christine1998:
+  type: article
+  title: "Plant physiology: plant biology in the Genome Era"
+  author: Christine, Mlot
+  date: 1998
+  page-range: 331-332
+  url:
+    value: http://www.sciencemag.org/cgi/collection/anatmorp
+    date: 1998-09-23
+  parent:
+    type: periodical
+    title: Science
+    volume: 281
+Xiao2001:
+  type: web
+  title: 出版业信息化迈人快车道
+  author: 萧钰
+  date: 2001-12-19
+  url:
+    value: http://www.creader.com/news/20011219/200112190019.html
+    date: 2002-04-15
+Yang1999:
+  type: article
+  title: 新型低合金高强韧性耐磨钢的研究
+  author:
+    - 杨瑞林
+    - 李力军
+    - 李玉成
+  date: 1999
+  page-range: 41-45
+  parent:
+    type: periodical
+    title: 钢铁
+    issue: 7
+    volume: 34
+Schinstock2000:
+  type: article
+  title: Real time kinematic solutions of a non-contacting, three dimensional metrology frame
+  author:
+    - Schinstock, D. E.
+    - Cuttino, J. F.
+  date: 2000
+  page-range: 70-76
+  parent:
+    type: periodical
+    title: Precision Engineering
+    issue: 1
+    volume: 24
+Wen1990:
+  type: book
+  title: 摩擦学原理
+  author: 温诗铸
+  date: 1990
+  publisher:
+    name: 清华大学出版社
+    location: 北京
+  page-range: 296-300
+GBT16159:
+  type: legislation
+  title: GB/T 16159-1996 汉语拼音正词法基本规则
+  author: 国家技术监督局
+  date: 1996
+  publisher:
+    name: 中国标准出版社
+    location: 北京

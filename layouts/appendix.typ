@@ -14,7 +14,7 @@
   show heading: i-figured.reset-counters.with(extra-kinds: ("image", "image-en", "table", "table-en", "algorithm"))
   show figure: i-figured.show-figure.with(
     extra-prefixes: (image: "img:", algorithm: "algo:"),
-    numbering: if doctype == "bachelor" { "1-1" } else { "A.1" },
+    numbering: if doctype == "bachelor" { "A1-1" } else { "A.1" },
   )
   set figure(outlined: false)
 

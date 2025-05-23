@@ -15,6 +15,8 @@
 
 3. 最后用 VS Code 打开生成的目录，打开 `thesis.typ` 文件，按下 `Ctrl + K V`(Windows) / `Command + K V`(MacOS) 或者是点击右上角的按钮进行实时编辑和预览。
 
+> 优点：使用最简单，目录结构清晰；缺点：官方模板库无法及时维护，出现 Bug 或者想要自定义样式，无法自行修改。
+
 #### 使用 GitHub 仓库版本
 
 1. 在 VS Code 中安装 [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件，负责语法高亮, 错误检查和 PDF 预览。
@@ -22,6 +24,8 @@
 2. 运行命令 `git clone https://github.com/tzhTaylor/modern-sjtu-thesis`，克隆本仓库到本地。
 
 3. 最后用 VS Code 打开目录，打开 `template/thesis.typ` 文件，按下 `Ctrl + K V`(Windows) / `Command + K V`(MacOS) 或者是点击右上角的按钮进行实时编辑和预览。
+
+> 优点：模板更新最及时，在了解 Typst 语法的情况下可以自行对模板进行修改；对 git 操作不太熟悉的用户门槛较高。
 
 ### Web APP
 
@@ -35,7 +39,7 @@ Typst 提供了官方的 Web App，支持像 Overleaf 一样在线编辑。
 
 ## 相关链接
 
-如果对 Typst 感兴趣的话，可以从开题报告和中期报告模板开始尝试。
+如果对 Typst 论文撰写感兴趣的话，可以从开题报告和中期报告模板开始尝试。
 
 - [研究生开题报告 Typst 模板](https://github.com/tzhTaylor/typst-sjtu-thesis-proposal)
 

@@ -24,7 +24,7 @@
   achievement,
   summary-en,
 ) = documentclass(
-  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
+  doctype: "bachelor", // 文档类型: "master" | "doctor" | "bachelor"
   date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
   twoside: false, // 双面模式
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
@@ -118,9 +118,9 @@
 
 == 论文正文
 
-论文正文是主体，一般由标题、文字叙述、图、表格和公式等部分构成 @liu_survey_2024。一般可包括理论分析、计算方法、实验装置和测试方法，经过整理加工的实验结果分析和讨论，与理论计算结果的比较以及本研究方法与已有研究方法的比较等，因学科性质不同可有所变化。
+论文正文是主体，一般由标题、文字叙述、图、表格和公式等部分构成 @Yu2001。一般可包括理论分析、计算方法、实验装置和测试方法，经过整理加工的实验结果分析和讨论，与理论计算结果的比较以及本研究方法与已有研究方法的比较等，因学科性质不同可有所变化。
 
-论文内容一般应由十个主要部分组成，依次为：1. 封面，2. 中文摘要，3. 英文摘要，4. 目录，5. 符号说明，6. 论文正文，7. 参考文献，8. 附录，9. 致谢，10. 攻读学位期间发表的学术论文目录@wang_overview_2025。
+论文内容一般应由十个主要部分组成，依次为：1. 封面，2. 中文摘要，3. 英文摘要，4. 目录，5. 符号说明，6. 论文正文，7. 参考文献，8. 附录，9. 致谢，10. 攻读学位期间发表的学术论文目录@Cheng1999 @Christine1998。
 
 以上各部分独立为一部分，每部分应从新的一页开始，且纸质论文应装订在论文的右侧。
 
@@ -262,7 +262,7 @@ $ 1 / mu nabla^2 Alpha - j omega sigma Alpha - nabla(1 / mu) times (nabla times 
 // 参考文献
 #bib(
   bibfunc: bibliography.with("ref.bib"),
-  full: false,
+  full: true,
 )// full: false 表示只显示已引用的文献，不显示未引用的文献；true 表示显示所有文献
 
 #show: appendix
