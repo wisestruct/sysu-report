@@ -32,6 +32,7 @@
   )
 
   set text(hyphenate: false, font: ziti.songti)
+  set text(lang: "zh", region: "cn")
   set par(leading: 20pt, first-line-indent: (amount: 2em, all: true))
 
   show: show-cn-fakebold

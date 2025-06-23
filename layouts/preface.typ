@@ -31,11 +31,11 @@
   counter(page).update(1)
 
   set figure.caption(separator: [#h(1em)])
-  show figure.where(kind: "image"): set text(size: zihao.wuhao, weight: "bold")
-  show figure.where(kind: "image-en"): set text(size: zihao.wuhao, weight: "bold")
-  show figure.where(kind: "table"): set text(size: zihao.wuhao, weight: "bold")
-  show figure.where(kind: "table-en"): set text(size: zihao.wuhao, weight: "bold")
-  show figure.where(kind: "algorithm"): set text(size: zihao.wuhao, weight: "bold")
+  show figure.caption: it => {
+    set text(size: zihao.wuhao, weight: "bold")
+    it
+  }
+  show figure: set text(size: zihao.wuhao)
   show figure.where(kind: "table"): set figure.caption(position: top)
   show figure.where(kind: "table-en"): set figure.caption(position: top)
   show figure.where(kind: "algorithm"): set figure.caption(position: top)

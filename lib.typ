@@ -3,7 +3,7 @@
 #import "utils/figurex.typ": *
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
-#import "layouts/mainmatter.typ": mainmatter
+#import "layouts/mainmatter.typ": *
 #import "layouts/appendix.typ": appendix
 #import "pages/cover.typ": cover-page
 #import "pages/cover-bachelor.typ": cover-bachelor-page

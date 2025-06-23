@@ -1,4 +1,7 @@
 #import "@preview/i-figured:0.2.4"
+#import "@preview/theorion:0.3.3": *
+#import "../utils/theoriom.typ": *
+#import "@preview/equate:0.3.2": *
 #import "../utils/style.typ": ziti, zihao
 #import "../utils/header.typ": main-text-page-header
 #import "../utils/heading.typ": main-text-first-heading, other-heading
@@ -34,14 +37,73 @@
     extra-prefixes: (image: "img:", algorithm: "algo:"),
     numbering: if doctype == "bachelor" { "1-1" } else { "1.1" },
   )
-  show math.equation: i-figured.show-equation.with(numbering: if doctype == "bachelor" { "(1-1)" } else { "(1.1)" })
-  show math.equation: set text(
-    font: (
-      (name: "Noto Sans CJK SC", covers: regex("\p{script=Han}")),
-      "Cambria Math",
+
+  // show math.equation: i-figured.show-equation.with(numbering: if doctype == "bachelor" { "(1-1)" } else { "(1.1)" })
+
+  set math.equation(
+    numbering: (..nums) => numbering(
+      if doctype == "bachelor" { "(1-1a)" } else { "(1.1a)" },
+      counter(heading).get().first(),
+      ..nums,
     ),
   )
+  show: equate.with(breakable: true, sub-numbering: false)
+  let equation-label(
+    heading,
+    equation,
+  ) = [(#numbering("1", heading)#h(0em)#if doctype == "bachelor" [-] else [.]#equation)]
+  let appendix-equation-label(
+    heading,
+    equation,
+  ) = [(#numbering("A", heading)#h(0em)#if doctype == "bachelor" [-] else [.]#equation)]
+  show ref: it => {
+    if it.element == none {
+      return it
+    }
+    let f = it.element.func()
+    let h1 = query(heading.where().before(it.target)).last()
+    if f == math.equation {
+      let equation-location = query(it.target).first().location()
+      let heading-index = counter(heading).at(equation-location).at(0)
+      let equation-index = counter(math.equation).at(equation-location).at(0)
+      link(
+        it.target,
+        it.element.supplement
+          + [ ]
+          + if h1.supplement == [附录] {
+            appendix-equation-label(heading-index, equation-index)
+          } else {
+            equation-label(heading-index, equation-index)
+          },
+      )
+    } else if it.element.supplement == [公式] {
+      let equation-location = query(it.target).first().location()
+      let heading-index = counter(heading).at(equation-location).at(0)
+      let equation-index = counter(math.equation).at(equation-location).at(0) - 1
+      link(
+        it.target,
+        it.element.supplement
+          + [ ]
+          + if h1.supplement == [附录] {
+            appendix-equation-label(heading-index, equation-index)
+          } else {
+            equation-label(heading-index, equation-index)
+          },
+      )
+    } else {
+      it
+    }
+  }
+
+  show math.equation: set text(font: ziti.math)
   set math.equation(number-align: end + bottom)
+
+  show: show-theorion
+
+  show cite: set text(font: "Times New Roman")
+  show smartquote: set text(font: "Times New Roman")
+
+  show raw: set text(font: ziti.dengkuan)
 
   show figure.where(kind: "subimage"): it => {
     if it.kind == "subimage" {

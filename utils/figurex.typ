@@ -25,6 +25,15 @@
   body
 }
 
+#let notes = state("notes", ())
+#let table-note(text) = {
+  notes.update(s => {
+    s.push(text)
+    s
+  })
+  context super[#notes.get().len()]
+}
+
 #let tablex(
   ..body,
   header: (),
@@ -55,31 +64,43 @@
     #show figure: set block(breakable: breakable)
     #figure(
       figure(
-        table(
-          columns: columns,
-          align: alignment,
-          inset: (y: 0.65em),
-          table.header(
-            table.cell(
-              colspan: if type(columns) == type(int) { columns } else { columns.len() },
-              {
-                context if nxt.get() {
-                  set align(left)
-                  text(weight: "bold")[续#ref(head-label)]
-                  nxt.update(false)
-                } else {
-                  v(-1em)
-                  nxt.update(true)
-                }
-              },
+        [
+          #table(
+            columns: columns,
+            align: alignment,
+            inset: inset,
+            table.header(
+              table.cell(
+                colspan: if type(columns) == int { columns } else { columns.len() },
+                {
+                  context if nxt.get() {
+                    set align(left)
+                    text(weight: "bold")[续#ref(head-label)]
+                    nxt.update(false)
+                  } else {
+                    v(-1em)
+                    nxt.update(true)
+                  }
+                },
+              ),
+              table.hline(),
+              ..header,
+              table.hline(stroke: 0.5pt),
             ),
+            ..body,
             table.hline(),
-            ..header,
-            table.hline(stroke: 0.5pt),
-          ),
-          ..body,
-          table.hline()
-        ),
+          )
+          #context for (i, e) in notes.get().enumerate() {
+            set par(spacing: 7pt, first-line-indent: 0em)
+            set align(left)
+            if i == 0 {
+              v(-1em)
+            }
+            text(zihao.xiaowu, weight: "regular")[#super[#(i + 1)] #e]
+          }
+          #notes.update(())
+        ],
+        gap: 1em,
         caption: caption-en,
         kind: "table-en",
         supplement: [Table],
@@ -109,8 +130,7 @@
   show figure.caption: set align(left)
 
   set table(stroke: none)
-  // show figure: set block(breakable: breakable)
-  show figure: set block(breakable: true)
+  show figure: set block(breakable: breakable)
 
   figure(
     table(
@@ -129,7 +149,7 @@
               set align(left)
               set text(weight: "bold")
               v(-0.5em)
-              line(start: (-5pt, 0pt), length: 100% + 15pt)
+              line(start: (-5pt, 0pt), length: 100% + 11pt)
               v(-0.3em)
               [
                 #figure(
@@ -138,7 +158,7 @@
                   caption: caption,
                   supplement: [算法],
                 )#new-label
-                #v(0.3em)
+                #v(0.5em)
               ]
               nxt.update(true)
             }
