@@ -1,11 +1,11 @@
 [package]
-name = "modern-sjtu-thesis"
+name = "modern-sysu-report"
 version = "0.4.0"
 entrypoint = "lib.typ"
-authors = ["tzhTaylor"]
+authors = ["wisestruct"]
 license = "MIT"
-description = "上海交通大学学位论文 Typst 模板。Shanghai Jiao Tong University Thesis Typst Template."
-repository = "https://github.com/tzhTaylor/modern-sjtu-thesis"
+description = "中山大学博士学位论文开题报告Typst模板。"
+repository = "https://github.com/wisestruct/modern-sysu-report"
 keywords = ["Shanghai Jiao Tong University", "thesis"]
 categories = ["thesis"]
 exclude = ["imgs"]

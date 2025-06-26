@@ -12,17 +12,15 @@
   align(
     center,
     image(
-      "../assets/sjtu-logo.png",
-      width: 3cm,
+      "../assets/sysu-logo.png",
+      width: 9cm,
     ),
   )
-
   let cover-title = if doctype == "doctor" {
-    "上海交通大学博士学位论文"
+    "中山大学博士学位论文开题报告开题报告"
   } else {
-    "上海交通大学硕士学位论文"
+    "中山大学硕士学位论文开题报告"
   }
-
   align(
     center,
     text(font: ziti.songti, size: zihao.xiaoer)[#cover-title],

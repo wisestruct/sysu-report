@@ -20,7 +20,7 @@
 
   v(0.4cm)
 
-  let cover-title = "上海交通大学学位论文"
+  let cover-title = "中山大学博士学位论文"
 
   align(
     center,

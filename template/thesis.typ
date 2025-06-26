@@ -11,10 +11,7 @@
   mainmatter,
   appendix,
   cover,
-  cover-en,
   declare,
-  abstract,
-  abstract-en,
   outline,
   image-outline,
   table-outline,
@@ -22,25 +19,20 @@
   bib,
   acknowledgement,
   achievement,
-  summary-en,
 ) = documentclass(
-  doctype: "master", // 文档类型: "master" | "doctor" | "bachelor"
-  date: datetime(year: 2024, month: 11, day: 11), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
+  doctype: "doctor", // 文档类型: "master" | "doctor" | "bachelor"
+  date: datetime(year: 2025, month: 06, day: 06), // 日期，如果需要显示今天的日期，可以使用 datetime.today() 函数
   twoside: false, // 双面模式
   print: false, // 打印模式, 设置为 true 时，根据奇偶页调整页边距
   anonymous: false, // 盲审模式
   info: (
-    student_id: "520XXXXXXXX",
-    name: "张三",
-    name_en: "Zhang San",
-    degree: "工学硕士",
-    supervisor: "李四教授",
-    supervisor_en: "Prof. Li Si",
-    title: "上海交通大学学位论文格式模板",
-    title_en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
-    school: "某某学院",
-    school_en: "School of XXXXXXX",
-    major: "某某专业",
+    student_id: "23111824",
+    name: "肖兴贵",
+    degree: "工学博士",
+    supervisor: "季春林院长 黄海风院长",
+    title: "基于机器学习的超表面天线自动化设计技术的研究",
+    school: "电子与通信工程学院",
+    major: "电子信息",
   ),
 )
 
@@ -48,32 +40,8 @@
 
 #cover()
 
-#cover-en()
-
-#declare(
-  confidentialty-level: "internal", // 保密级别: "public" | "internal" | "secret" | "confidential"
-  confidentialty-year: 2, // 保密年份数，请根据保密级别的要求填写
-  // date: datetime.today(),
-)
 
 #show: preface
-
-#abstract(keywords: (
-  "学位论文",
-  "论文格式",
-  "规范化",
-  "模板",
-))[
-  学位论文是研究生从事科研工作的成果的主要表现，集中表明了作者在研究工作中获得的新的发明、理论或见解，是研究生申请硕士或博士学位的重要依据，也是科研领域中的重要文献资料和社会的宝贵财富。
-
-  为了提高研究生学位论文的质量，做到学位论文在内容和格式上的规范化与统一化，特制作本模板。
-]
-
-#abstract-en(keywords: ("dissertation", "dissertation format", "standardization", "template"))[
-  As a primary means of demonstrating research findings for postgraduate students, dissertation is a systematic and standardized record of the new inventions, theories or insights obtained by the author in the research work. It can not only function as an important reference when students pursue further studies, but also contribute to scientific research and social development.
-
-  This template is therefore made to improve the quality of postgraduates' dissertations and to further standardize it both in content and in format.
-]
 
 #outline()
 

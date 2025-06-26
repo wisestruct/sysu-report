@@ -59,11 +59,11 @@
         if calc.odd(counter(page).get().first()) {
           // 奇数页左边是论文名称，右边是章节标题
           if doctype == "doctor" {
-            "上海交通大学博士学位论文"
+            "中山大学博士学位论文开题报告"
           } else if doctype == "master" {
             "上海交通大学硕士学位论文"
           } else {
-            "上海交通大学学位论文"
+            "中山大学博士学位论文"
           }
           h(1fr)
           headingTitle
@@ -72,20 +72,20 @@
           headingTitle
           h(1fr)
           if doctype == "doctor" {
-            "上海交通大学博士学位论文"
+            "中山大学博士学位论文开题报告"
           } else if doctype == "master" {
             "上海交通大学硕士学位论文"
           } else {
-            "上海交通大学学位论文"
+            "中山大学博士学位论文"
           }
         }
       } else {
         if doctype == "doctor" {
-          "上海交通大学博士学位论文"
+          "中山大学博士学位论文开题报告"
         } else if doctype == "master" {
           "上海交通大学硕士学位论文"
         } else {
-          "上海交通大学学位论文"
+          "中山大学博士学位论文"
         }
         h(1fr)
         headingTitle
@@ -150,11 +150,11 @@
         if calc.odd(counter(page).get().first()) {
           // 奇数页左边是论文名称，右边是章节标题
           if doctype == "doctor" {
-            "上海交通大学博士学位论文"
+            "中山大学博士学位论文开题报告"
           } else if doctype == "master" {
             "上海交通大学硕士学位论文"
           } else {
-            "上海交通大学学位论文"
+            "中山大学博士学位论文"
           }
           h(1fr)
           headingNumber
@@ -167,20 +167,20 @@
           headingTitle
           h(1fr)
           if doctype == "doctor" {
-            "上海交通大学博士学位论文"
+            "中山大学博士学位论文开题报告"
           } else if doctype == "master" {
             "上海交通大学硕士学位论文"
           } else {
-            "上海交通大学学位论文"
+            "中山大学博士学位论文"
           }
         }
       } else {
         if doctype == "doctor" {
-          "上海交通大学博士学位论文"
+          "中山大学博士学位论文开题报告"
         } else if doctype == "master" {
           "上海交通大学硕士学位论文"
         } else {
-          "上海交通大学学位论文"
+          "中山大学博士学位论文"
         }
         h(1fr)
         headingNumber
@@ -248,11 +248,11 @@
         if calc.odd(counter(page).get().first()) {
           // 奇数页左边是论文名称，右边是章节标题
           if doctype == "doctor" {
-            "上海交通大学博士学位论文"
+            "中山大学博士学位论文开题报告"
           } else if doctype == "master" {
             "上海交通大学硕士学位论文"
           } else {
-            "上海交通大学学位论文"
+            "中山大学博士学位论文"
           }
           h(1fr)
           headingNumber
@@ -265,20 +265,20 @@
           headingTitle
           h(1fr)
           if doctype == "doctor" {
-            "上海交通大学博士学位论文"
+            "中山大学博士学位论文开题报告"
           } else if doctype == "master" {
             "上海交通大学硕士学位论文"
           } else {
-            "上海交通大学学位论文"
+            "中山大学博士学位论文"
           }
         }
       } else {
         if doctype == "doctor" {
-          "上海交通大学博士学位论文"
+          "中山大学博士学位论文开题报告"
         } else if doctype == "master" {
           "上海交通大学硕士学位论文"
         } else {
-          "上海交通大学学位论文"
+          "中山大学博士学位论文"
         }
         h(1fr)
         headingNumber

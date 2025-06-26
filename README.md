@@ -1,6 +1,6 @@
-# 上海交通大学学位论文 modern-sjtu-thesis
+# 中山大学博士学位论文 modern-sysu-report
 
-这是上海交通大学学位论文的 [Typst 模板](https://typst.app/universe/package/modern-sjtu-thesis)
+这是中山大学博士学位论文的 [Typst 模板](https://typst.app/universe/package/modern-sysu-report)
 ，它能够简洁、快速、持续生成 PDF 格式的毕业论文，现已支持本科、硕士和博士的毕业论文撰写，均参考官方提供的word模板进行开发。
 
 ## 使用
@@ -11,7 +11,7 @@
 
 1. 在 VS Code 中安装 [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件，负责语法高亮, 错误检查和 PDF 预览。
 
-2. 按下 `Ctrl + Shift + P`(Windows) / `Command + Shift + P`(MacOS) 打开命令界面，输入 `Typst: Show available Typst templates (gallery) for picking up a template` 打开 Tinymist 提供的 Template Gallery，然后从里面找到 `modern-sjtu-thesis`，点击 `❤` 按钮进行收藏，以及点击 `+` 号，就可以创建对应的论文模板了。
+2. 按下 `Ctrl + Shift + P`(Windows) / `Command + Shift + P`(MacOS) 打开命令界面，输入 `Typst: Show available Typst templates (gallery) for picking up a template` 打开 Tinymist 提供的 Template Gallery，然后从里面找到 `modern-sysu-report`，点击 `❤` 按钮进行收藏，以及点击 `+` 号，就可以创建对应的论文模板了。
 
 3. 最后用 VS Code 打开生成的目录，打开 `thesis.typ` 文件，按下 `Ctrl + K V`(Windows) / `Command + K V`(MacOS) 或者是点击右上角的按钮进行实时编辑和预览。
 
@@ -21,7 +21,7 @@
 
 1. 在 VS Code 中安装 [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件，负责语法高亮, 错误检查和 PDF 预览。
 
-2. 运行命令 `git clone https://github.com/tzhTaylor/modern-sjtu-thesis`，克隆本仓库到本地。
+2. 运行命令 `git clone https://github.com/wisestruct/modern-sysu-report`，克隆本仓库到本地。
 
 3. 最后用 VS Code 打开目录，打开 `template/thesis.typ` 文件，按下 `Ctrl + K V`(Windows) / `Command + K V`(MacOS) 或者是点击右上角的按钮进行实时编辑和预览。
 
@@ -31,7 +31,7 @@
 
 Typst 提供了官方的 Web App，支持像 Overleaf 一样在线编辑。
 
-实际上，我们只需要在 [Web App](https://typst.app/?template=modern-sjtu-thesis&version=0.4.0) 中的 `Start from template` 里选择 `modern-sjtu-thesis`，即可在线创建模板并使用。
+实际上，我们只需要在 [Web App](https://typst.app/?template=modern-sysu-report&version=0.4.0) 中的 `Start from template` 里选择 `modern-sysu-report`，即可在线创建模板并使用。
 
 **但是 Web App 并没有安装本地 Windows 或 MacOS 所拥有的字体，所以字体上可能存在差异，所以推荐本地编辑！**
 
@@ -41,9 +41,9 @@ Typst 提供了官方的 Web App，支持像 Overleaf 一样在线编辑。
 
 如果对 Typst 论文撰写感兴趣的话，可以从开题报告和中期报告模板开始尝试。
 
-- [研究生开题报告 Typst 模板](https://github.com/tzhTaylor/typst-sjtu-thesis-proposal)
+- [研究生开题报告 Typst 模板](https://github.com/wisestruct/typst-sjtu-thesis-proposal)
 
-- [硕士研究生中期报告 Typst 模板](https://github.com/tzhTaylor/typst-sjtu-thesis-midterm)
+- [硕士研究生中期报告 Typst 模板](https://github.com/wisestruct/typst-sjtu-thesis-midterm)
 
 ## 致谢
 

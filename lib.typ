@@ -29,13 +29,13 @@
   date = date
   info = (
     (
-      student_id: "520XXXXXXXX",
-      name: "张三",
+      student_id: "123123123",
+      name: "某某人",
       name_en: "Zhang San",
-      degree: "工学硕士",
-      supervisor: "李四教授",
+      degree: "工学博士",
+      supervisor: "某某教授",
       supervisor_en: "Prof. Li Si",
-      title: "上海交通大学学位论文格式模板",
+      title: "中山大学博士学位论文开题报告格式模板",
       title_en: "DISSERTATION TEMPLATE FOR MASTER DEGREE OF ENGINEERING IN SHANGHAI JIAO TONG UNIVERSITY",
       school: "某某学院",
       school_en: "School of XXXXXXX",
